@@ -1,4 +1,4 @@
-package com.lqr.biliblili;
+package com.lqr.biliblili.app;
 
 import android.app.Application;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +8,7 @@ import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.di.module.GlobalConfigModule;
 import com.jess.arms.http.GlobalHttpHandler;
 import com.jess.arms.integration.ConfigModule;
+import com.lqr.biliblili.BuildConfig;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 

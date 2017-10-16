@@ -15,22 +15,23 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="design_width"
-            android:value="1080"/>
+            android:value="720"/>
         <meta-data
             android:name="design_height"
-            android:value="1920"/>
+            android:value="1280"/>
 
         <!-- arms配置 -->
         <meta-data
-            android:name="com.lqr.biliblili.GlobalConfiguration"
+            android:name="com.lqr.biliblili.app.GlobalConfiguration"
             android:value="ConfigModule"/>
 
         <activity android:name=".mvp.ui.activity.MainActivity">
+        </activity>
+        <activity android:name=".mvp.ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
