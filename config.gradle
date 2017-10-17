@@ -54,6 +54,7 @@ ext {
             "paginate"                 : "com.github.markomilos:paginate:0.5.1",
             "vlayout"                  : "com.alibaba.android:vlayout:1.1.0@aar",
             "circleimageview"          : "de.hdodenhof:circleimageview:2.2.0",
+            "FlycoTabLayout_Lib"       : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
 
             //rx1
             "rxandroid"                : "io.reactivex:rxandroid:1.2.1",

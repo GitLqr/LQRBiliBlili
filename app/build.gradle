@@ -51,6 +51,7 @@ dependencies {
 
     // view
     compile(rootProject.ext.dependencies["circleimageview"])
+    compile(rootProject.ext.dependencies["FlycoTabLayout_Lib"])
 
     // tool
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
@@ -58,9 +59,9 @@ dependencies {
     provided rootProject.ext.dependencies["javax.annotation"]
     compile rootProject.ext.dependencies["arouter"]
     annotationProcessor rootProject.ext.dependencies["arouter"]
+    compile(rootProject.ext.dependencies["fragmentation"])
     compile(rootProject.ext.dependencies["fragmentation-core"])
     compile(rootProject.ext.dependencies["statusbarutil"])
-//    compile(rootProject.ext.dependencies["systembartint"])
 
     // test
     testCompile rootProject.ext.dependencies["junit"]

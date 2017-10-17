@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:id="@+id/group1">
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
             android:checkable="true"
@@ -35,7 +37,9 @@
             android:title="@string/nav_look_later"/>
     </group>
 
-    <group android:id="@+id/group2">
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_live_center"
             android:checkable="true"

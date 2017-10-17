@@ -5,7 +5,12 @@
     <color name="colorAccent">@android:color/black</color>
 
     <color name="white">#ffffff</color>
+
     <color name="nav_menu_bg">#ffffff</color>
     <color name="nav_bottom_line">#DDDDDD</color>
     <color name="nav_bottom_text">#464646</color>
+
+    <color name="bottom_bar_under_line">#DDDDDD</color>
+    <color name="bottom_bar_text_select">#FA749A</color>
+    <color name="bottom_bar_text_unselect">#87888A</color>
 </resources>
