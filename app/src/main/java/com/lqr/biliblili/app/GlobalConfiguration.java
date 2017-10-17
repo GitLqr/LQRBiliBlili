@@ -1,8 +1,8 @@
 package com.lqr.biliblili.app;
 
 import android.app.Application;
-import android.support.v4.app.FragmentManager;
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
 
 import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.di.module.GlobalConfigModule;

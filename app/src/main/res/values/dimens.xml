@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="nav_bottom_rect_height">100px</dimen>
+    <dimen name="nav_bottom_img">75px</dimen>
+    <dimen name="nav_bottom_text">22px</dimen>
+    <dimen name="nav_bottom_text_margin_left">5px</dimen>
+
+    <!--修改NavigationView中的Item的Icon大小-->
+    <dimen name="design_navigation_icon_size">24dp</dimen>
+</resources>

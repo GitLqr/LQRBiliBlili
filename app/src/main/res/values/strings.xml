@@ -1,5 +1,22 @@
 <resources>
     <string name="app_name">LQRBiliBlili</string>
 
+    <string name="click_avtor_login">点击头像登录</string>
+
+    <string name="nav_home">首页</string>
+    <string name="nav_history">历史记录</string>
+    <string name="nav_offline_cache">离线缓存</string>
+    <string name="nav_my_collect">我的收藏</string>
+    <string name="nav_my_follow">我的关注</string>
+    <string name="nav_look_later">稍后再看</string>
+    <string name="nav_live_center">直播中心</string>
+    <string name="nav_my_vip">我的大会员</string>
+    <string name="nav_free_fow">免流量服务</string>
+    <string name="nav_vip_order">会员购订单</string>
+
+    <string name="setting">设置</string>
+    <string name="theme">主题</string>
+    <string name="at_night">夜间</string>
+
     <string name="copy_right">Copyright © 2009-2017 bilibili</string>
 </resources>

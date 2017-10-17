@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/group1">
+        <item
+            android:id="@+id/nav_home"
+            android:checkable="true"
+            android:checked="true"
+            android:icon="@mipmap/ic_nav_home"
+            android:title="@string/nav_home"/>
+        <item
+            android:id="@+id/nav_history"
+            android:checkable="true"
+            android:icon="@mipmap/ic_nav_history"
+            android:title="@string/nav_history"/>
+        <item
+            android:id="@+id/nav_offline_cache"
+            android:checkable="true"
+            android:icon="@mipmap/ic_nav_offline_cache"
+            android:title="@string/nav_offline_cache"/>
+        <item
+            android:id="@+id/nav_my_collect"
+            android:checkable="true"
+            android:icon="@mipmap/ic_nav_my_collect"
+            android:title="@string/nav_my_collect"/>
+        <item
+            android:id="@+id/nav_my_follow"
+            android:checkable="true"
+            android:icon="@mipmap/ic_nav_my_follow"
+            android:title="@string/nav_my_follow"/>
+        <item
+            android:id="@+id/nav_look_later"
+            android:checkable="true"
+            android:icon="@mipmap/ic_nav_look_later"
+            android:title="@string/nav_look_later"/>
+    </group>
+
+    <group android:id="@+id/group2">
+        <item
+            android:id="@+id/nav_live_center"
+            android:checkable="true"
+            android:icon="@mipmap/ic_nav_live_center"
+            android:title="@string/nav_live_center"/>
+        <item
+            android:id="@+id/nav_my_vip"
+            android:checkable="true"
+            android:icon="@mipmap/ic_nav_my_vip"
+            android:title="@string/nav_my_vip"/>
+        <item
+            android:id="@+id/nav_free_fow"
+            android:checkable="true"
+            android:icon="@mipmap/ic_nav_free_fow"
+            android:title="@string/nav_free_fow"/>
+        <item
+            android:id="@+id/nav_vip_order"
+            android:checkable="true"
+            android:icon="@mipmap/ic_nav_vip_order"
+            android:title="@string/nav_vip_order"/>
+    </group>
+
+</menu>

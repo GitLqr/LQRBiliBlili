@@ -49,6 +49,9 @@ dependencies {
 
     compile 'me.jessyan:arms:2.2.3'
 
+    // view
+    compile(rootProject.ext.dependencies["circleimageview"])
+
     // tool
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
@@ -56,6 +59,8 @@ dependencies {
     compile rootProject.ext.dependencies["arouter"]
     annotationProcessor rootProject.ext.dependencies["arouter"]
     compile(rootProject.ext.dependencies["fragmentation-core"])
+    compile(rootProject.ext.dependencies["statusbarutil"])
+//    compile(rootProject.ext.dependencies["systembartint"])
 
     // test
     testCompile rootProject.ext.dependencies["junit"]

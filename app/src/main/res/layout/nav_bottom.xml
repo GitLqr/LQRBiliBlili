@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/nav_menu_bg"
+              android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="@dimen/nav_bottom_rect_height"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/nav_bottom_img"
+                android:layout_height="@dimen/nav_bottom_img"
+                android:src="@mipmap/ic_nav_setting"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/nav_bottom_text_margin_left"
+                android:text="@string/setting"
+                android:textColor="@color/nav_bottom_text"
+                android:textSize="@dimen/nav_bottom_text"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="@dimen/nav_bottom_rect_height"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/nav_bottom_img"
+                android:layout_height="@dimen/nav_bottom_img"
+                android:src="@mipmap/ic_nav_theme"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/nav_bottom_text_margin_left"
+                android:text="@string/theme"
+                android:textColor="@color/nav_bottom_text"
+                android:textSize="@dimen/nav_bottom_text"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="@dimen/nav_bottom_rect_height"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/nav_bottom_img"
+                android:layout_height="@dimen/nav_bottom_img"
+                android:src="@mipmap/ic_nav_at_night"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/nav_bottom_text_margin_left"
+                android:text="@string/at_night"
+                android:textColor="@color/nav_bottom_text"
+                android:textSize="@dimen/nav_bottom_text"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
