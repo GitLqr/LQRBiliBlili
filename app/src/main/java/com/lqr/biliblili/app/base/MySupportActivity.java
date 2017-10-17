@@ -1,7 +1,6 @@
 package com.lqr.biliblili.app.base;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.MotionEvent;
@@ -39,15 +38,15 @@ public abstract class MySupportActivity<P extends IPresenter> extends BaseActivi
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         mDelegate.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-//        mDelegate.onPostCreate(savedInstanceState);
+        mDelegate.onPostCreate(savedInstanceState);
     }
 
     @Override
@@ -56,11 +55,21 @@ public abstract class MySupportActivity<P extends IPresenter> extends BaseActivi
         super.onDestroy();
     }
 
+    /**
+     * Note： return mDelegate.dispatchTouchEvent(ev) || super.dispatchTouchEvent(ev);
+     */
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         return mDelegate.dispatchTouchEvent(ev) || super.dispatchTouchEvent(ev);
     }
 
+    /**
+     * 不建议复写该方法,请使用 {@link #onBackPressedSupport} 代替
+     */
+    @Override
+    final public void onBackPressed() {
+        mDelegate.onBackPressed();
+    }
 
     /**
      * 该方法回调时机为,Activity回退栈内Fragment的数量 小于等于1 时,默认finish Activity

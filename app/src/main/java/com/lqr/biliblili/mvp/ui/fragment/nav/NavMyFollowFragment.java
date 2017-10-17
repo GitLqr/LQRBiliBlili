@@ -14,6 +14,10 @@ import com.lqr.biliblili.app.base.MySupportFragment;
  */
 public class NavMyFollowFragment extends MySupportFragment {
 
+    public static NavMyFollowFragment newInstance() {
+        return new NavMyFollowFragment();
+    }
+
     @Override
     public void setupFragmentComponent(AppComponent appComponent) {
 

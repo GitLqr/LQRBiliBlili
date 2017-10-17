@@ -14,6 +14,10 @@ import com.lqr.biliblili.app.base.MySupportFragment;
  */
 public class NavOfflineCacheFragment extends MySupportFragment {
 
+    public static NavOfflineCacheFragment newInstance() {
+        return new NavOfflineCacheFragment();
+    }
+
     @Override
     public void setupFragmentComponent(AppComponent appComponent) {
 

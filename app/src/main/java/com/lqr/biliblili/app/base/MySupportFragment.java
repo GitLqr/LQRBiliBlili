@@ -21,7 +21,6 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
  * @描述 基于Fragmentation框架，作为Fragment基类（该类只为构建Fragmentation框架的Fragment基类）
  */
 public abstract class MySupportFragment<P extends IPresenter> extends BaseFragment<P> implements ISupportFragment {
-
     final SupportFragmentDelegate mDelegate = new SupportFragmentDelegate(this);
     protected FragmentActivity _mActivity;
 
@@ -105,15 +104,28 @@ public abstract class MySupportFragment<P extends IPresenter> extends BaseFragme
         mDelegate.setUserVisibleHint(isVisibleToUser);
     }
 
+    /**
+     * If you want to call the start()/pop()/showHideFragment() on the onCreateXX/onActivityCreated,
+     * call this method to deliver the transaction to the queue.
+     * <p>
+     * 在onCreate/onCreateView/onActivityCreated中使用 start()/pop()/showHideFragment(),请使用该方法把你的任务入队
+     *
+     * @param runnable start() , pop() or showHideFragment()
+     */
     @Override
     public void enqueueAction(Runnable runnable) {
         mDelegate.enqueueAction(runnable);
     }
 
+    /**
+     * Called when the enter-animation end.
+     * 入栈动画 结束时,回调
+     */
     @Override
-    public void onEnterAnimationEnd(@Nullable Bundle savedInstanceState) {
+    public void onEnterAnimationEnd(Bundle savedInstanceState) {
         mDelegate.onEnterAnimationEnd(savedInstanceState);
     }
+
 
     /**
      * Lazy initial，Called when fragment is first called.
@@ -150,7 +162,7 @@ public abstract class MySupportFragment<P extends IPresenter> extends BaseFragme
      * Return true if the fragment has been supportVisible.
      */
     @Override
-    public boolean isSupportVisible() {
+    final public boolean isSupportVisible() {
         return mDelegate.isSupportVisible();
     }
 
@@ -191,16 +203,39 @@ public abstract class MySupportFragment<P extends IPresenter> extends BaseFragme
         return mDelegate.onBackPressedSupport();
     }
 
+    /**
+     * 类似 {@link Activity#setResult(int, Intent)}
+     * <p>
+     * Similar to {@link Activity#setResult(int, Intent)}
+     *
+     * @see #startForResult(ISupportFragment, int)
+     */
     @Override
     public void setFragmentResult(int resultCode, Bundle bundle) {
         mDelegate.setFragmentResult(resultCode, bundle);
     }
 
+    /**
+     * 类似  {@link Activity#onActivityResult(int, int, Intent)}
+     * <p>
+     * Similar to {@link Activity#onActivityResult(int, int, Intent)}
+     *
+     * @see #startForResult(ISupportFragment, int)
+     */
     @Override
     public void onFragmentResult(int requestCode, int resultCode, Bundle data) {
         mDelegate.onFragmentResult(requestCode, resultCode, data);
     }
 
+    /**
+     * 在start(TargetFragment,LaunchMode)时,启动模式为SingleTask/SingleTop, 回调TargetFragment的该方法
+     * 类似 {@link Activity#onNewIntent(Intent)}
+     * <p>
+     * Similar to {@link Activity#onNewIntent(Intent)}
+     *
+     * @param args putNewBundle(Bundle newBundle)
+     * @see #start(ISupportFragment, int)
+     */
     @Override
     public void onNewBundle(Bundle args) {
         mDelegate.onNewBundle(args);
@@ -215,6 +250,7 @@ public abstract class MySupportFragment<P extends IPresenter> extends BaseFragme
     public void putNewBundle(Bundle newBundle) {
         mDelegate.putNewBundle(newBundle);
     }
+
 
     /****************************************以下为可选方法(Optional methods)******************************************************/
     // 自定制Support时，可移除不必要的方法

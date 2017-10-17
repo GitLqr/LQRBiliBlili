@@ -14,6 +14,10 @@ import com.lqr.biliblili.app.base.MySupportFragment;
  */
 public class NavLiveCenterFragment extends MySupportFragment {
 
+    public static NavLiveCenterFragment newInstance() {
+        return new NavLiveCenterFragment();
+    }
+
     @Override
     public void setupFragmentComponent(AppComponent appComponent) {
 

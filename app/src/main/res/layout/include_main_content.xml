@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
@@ -11,19 +10,5 @@
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-
-    <com.flyco.tablayout.CommonTabLayout
-        android:id="@+id/bottom_bar"
-        android:layout_width="match_parent"
-        android:layout_height="112px"
-        app:tl_iconHeight="@dimen/bottom_bar_icon"
-        app:tl_iconWidth="@dimen/bottom_bar_icon"
-        app:tl_tab_space_equal="true"
-        app:tl_textSelectColor="@color/bottom_bar_text_select"
-        app:tl_textUnselectColor="@color/bottom_bar_text_unselect"
-        app:tl_textsize="@dimen/bottom_bar_text"
-        app:tl_underline_color="@color/bottom_bar_under_line"
-        app:tl_underline_gravity="TOP"
-        app:tl_underline_height="1px"/>
 
 </LinearLayout>

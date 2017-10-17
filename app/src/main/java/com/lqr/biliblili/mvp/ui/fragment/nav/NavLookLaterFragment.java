@@ -14,6 +14,10 @@ import com.lqr.biliblili.app.base.MySupportFragment;
  */
 public class NavLookLaterFragment extends MySupportFragment {
 
+    public static NavLookLaterFragment newInstance() {
+        return new NavLookLaterFragment();
+    }
+
     @Override
     public void setupFragmentComponent(AppComponent appComponent) {
 

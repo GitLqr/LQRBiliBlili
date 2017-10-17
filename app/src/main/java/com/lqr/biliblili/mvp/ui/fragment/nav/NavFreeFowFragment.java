@@ -14,6 +14,10 @@ import com.lqr.biliblili.app.base.MySupportFragment;
  */
 public class NavFreeFowFragment extends MySupportFragment {
 
+    public static NavFreeFowFragment newInstance() {
+        return new NavFreeFowFragment();
+    }
+
     @Override
     public void setupFragmentComponent(AppComponent appComponent) {
 
