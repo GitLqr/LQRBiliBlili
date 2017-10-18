@@ -52,12 +52,16 @@
 
             </android.support.v7.widget.Toolbar>
 
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                app:tabIndicatorColor="@color/tab_indicator_main_home"
+                app:tabIndicatorHeight="@dimen/tab_indicator_height_main_home"
+                app:tabSelectedTextColor="@color/tab_text_selected_main_home"
+                app:tabTextColor="@color/tab_text_main_home"/>
         </android.support.design.widget.AppBarLayout>
-
-        <com.flyco.tablayout.SlidingTabLayout
-            android:id="@+id/tablayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview"

@@ -9,7 +9,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -19,6 +19,7 @@ import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.utils.DeviceUtils;
 import com.lqr.biliblili.R;
 import com.lqr.biliblili.app.base.MySupportActivity;
+import com.lqr.biliblili.app.tag.MainTag;
 import com.lqr.biliblili.di.component.DaggerMainComponent;
 import com.lqr.biliblili.di.module.MainModule;
 import com.lqr.biliblili.mvp.contract.MainContract;
@@ -33,6 +34,8 @@ import com.lqr.biliblili.mvp.ui.fragment.nav.NavMyFollowFragment;
 import com.lqr.biliblili.mvp.ui.fragment.nav.NavMyVipFragment;
 import com.lqr.biliblili.mvp.ui.fragment.nav.NavOfflineCacheFragment;
 import com.lqr.biliblili.mvp.ui.fragment.nav.NavVipOrderFragment;
+
+import org.simple.eventbus.Subscriber;
 
 import java.util.TimerTask;
 
@@ -52,8 +55,8 @@ public class MainActivity extends MySupportActivity<MainPresenter> implements Ma
 
     private long mPreTime = 0;
 
-    @BindView(R.id.fl_root)
-    FrameLayout mFlRoot;
+    @BindView(R.id.ll_root)
+    LinearLayout mLlRoot;
     @BindView(R.id.drawer)
     DrawerLayout mDrawer;
     @BindView(R.id.nav)
@@ -132,13 +135,15 @@ public class MainActivity extends MySupportActivity<MainPresenter> implements Ma
     }
 
     private void initStatusBar() {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-            StatusBarUtil.setTranslucentForDrawerLayout(this, mDrawer, 40);
-        } else {
-            StatusBarUtil.setColorNoTranslucent(this, ArmsUtils.getColor(this, R.color.colorPrimary));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+                StatusBarUtil.setTranslucentForDrawerLayout(this, mDrawer, 40);
+            } else {
+                StatusBarUtil.setColorNoTranslucent(this, ArmsUtils.getColor(this, R.color.colorPrimary));
+            }
+            mLlRoot.setPadding(0, DeviceUtils.getStatuBarHeight(this), 0, 0);
+            mNav.getHeaderView(0).setPadding(0, DeviceUtils.getStatuBarHeight(this), 0, 0);
         }
-        mFlRoot.setPadding(0, DeviceUtils.getStatuBarHeight(this), 0, 0);
-//        mNav.getHeaderView(0).setPadding(0, DeviceUtils.getStatuBarHeight(this), 0, 0);
     }
 
     private void initNavigationView() {
@@ -318,8 +323,9 @@ public class MainActivity extends MySupportActivity<MainPresenter> implements Ma
         }
     }
 
-    public void openDrawer() {
-        if (!mDrawer.isDrawerOpen(mDrawer)) {
+    @Subscriber(tag = "openDrawer")
+    public void openDrawer(MainTag mainTag) {
+        if (!mDrawer.isDrawerOpen(GravityCompat.START)) {
             mDrawer.openDrawer(GravityCompat.START);
         }
     }

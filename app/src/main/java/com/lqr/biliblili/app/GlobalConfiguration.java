@@ -1,7 +1,9 @@
 package com.lqr.biliblili.app;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -12,6 +14,8 @@ import com.jess.arms.integration.ConfigModule;
 import com.lqr.biliblili.BuildConfig;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+
+import org.simple.eventbus.EventBus;
 
 import java.util.List;
 
@@ -84,6 +88,42 @@ public class GlobalConfiguration implements ConfigModule {
     @Override
     public void injectActivityLifecycle(Context context, List<Application.ActivityLifecycleCallbacks> lifecycles) {
         //向Activity的生命周期中注入一些自定义逻辑
+        lifecycles.add(new Application.ActivityLifecycleCallbacks() {
+            @Override
+            public void onActivityCreated(Activity activity, Bundle bundle) {
+                EventBus.getDefault().register(activity);
+            }
+
+            @Override
+            public void onActivityStarted(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityResumed(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityPaused(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityStopped(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivitySaveInstanceState(Activity activity, Bundle bundle) {
+
+            }
+
+            @Override
+            public void onActivityDestroyed(Activity activity) {
+                EventBus.getDefault().unregister(activity);
+            }
+        });
     }
 
 

@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<com.lqr.biliblili.mvp.ui.widget.AutoDrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fl_root"
+    android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:fitsSystemWindows="true">
 
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+    <include layout="@layout/include_main_content"/>
 
-        <include layout="@layout/include_main_content"/>
+    <include layout="@layout/include_main_nav"/>
 
-        <include layout="@layout/include_main_nav"/>
-
-    </android.support.v4.widget.DrawerLayout>
-</FrameLayout>
+</com.lqr.biliblili.mvp.ui.widget.AutoDrawerLayout>

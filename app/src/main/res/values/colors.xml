@@ -6,11 +6,19 @@
 
     <color name="white">#ffffff</color>
 
+    <color name="main_bg">#ffffff</color>
+
+    <color name="nav_header_text">#ffffff</color>
     <color name="nav_menu_bg">#ffffff</color>
     <color name="nav_bottom_line">#DDDDDD</color>
     <color name="nav_bottom_text">#464646</color>
 
-    <color name="bottom_bar_under_line">#DDDDDD</color>
-    <color name="bottom_bar_text_select">#FA749A</color>
-    <color name="bottom_bar_text_unselect">#87888A</color>
+    <color name="bottom_bar_under_line_nav_home">#DDDDDD</color>
+    <color name="bottom_bar_text_select_nav_home">#FA749A</color>
+    <color name="bottom_bar_text_unselect_nav_home">#87888A</color>
+
+    <color name="tab_indicator_main_home">#ffffff</color>
+    <color name="tab_text_main_home">#ffffff</color>
+    <color name="tab_text_selected_main_home">#fb7299</color>
+
 </resources>

@@ -23,12 +23,20 @@
     <string name="main_dynamic">动态</string>
     <string name="main_communicate">消息</string>
 
-    <!--toolbar-->
+    <!--MainHomeFragment:toolbar-->
     <string name="main_active">活动</string>
     <string name="main_game">游戏</string>
     <string name="main_download">下载</string>
     <string name="main_search">搜索</string>
     <string name="main_edit">编辑</string>
+
+    <!--MainHomeFragment:tabLayout-->
+    <string-array name="tab_titles_main_home">
+        <item>直播</item>
+        <item>推荐</item>
+        <item>追番</item>
+        <item>专栏</item>
+    </string-array>
 
     <string name="double_click_to_exit">再按一次退出</string>
     <string name="copy_right">Copyright © 2009-2017 bilibili</string>

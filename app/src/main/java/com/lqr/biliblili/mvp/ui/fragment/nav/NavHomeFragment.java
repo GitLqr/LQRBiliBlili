@@ -51,6 +51,7 @@ public class NavHomeFragment extends MySupportFragment {
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         initFragmentation();
         initBottomBar();
     }

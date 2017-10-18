@@ -8,10 +8,12 @@
     <dimen name="nav_bottom_text_margin_left">5px</dimen>
 
     <!--NavHomeFragment:底部导航栏-->
-    <dimen name="main_bottom_bar_icon">55px</dimen>
-    <dimen name="main_bottom_bar_text">28px</dimen>
+    <dimen name="bottom_bar_icon_nav_home">22dp</dimen>
+    <dimen name="bottom_bar_text_nav_home">12sp</dimen>
 
     <!--MainHomeFragment:顶部导航栏-->
+    <dimen name="tab_indicator_height_main_home">5px</dimen>
+    <dimen name="tab_text_size_main_home">22px</dimen>
 
 
     <!--修改NavigationView中的Item的Icon大小-->
