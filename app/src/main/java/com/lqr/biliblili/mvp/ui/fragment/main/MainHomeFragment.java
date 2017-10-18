@@ -46,8 +46,9 @@ public class MainHomeFragment extends MySupportFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
         inflater.inflate(R.menu.main_home_menu, menu);
+//        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override

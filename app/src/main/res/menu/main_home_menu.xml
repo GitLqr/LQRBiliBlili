@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/main_active"
         android:icon="@mipmap/ic_active_menu"
-        android:title="@string/main_active"/>
+        android:title="@string/main_active"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/main_game"
         android:icon="@mipmap/ic_game_menu"
-        android:title="@string/main_game"/>
+        android:title="@string/main_game"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/main_download"
         android:icon="@mipmap/ic_download_menu"
-        android:title="@string/main_download"/>
+        android:title="@string/main_download"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/main_search"
         android:icon="@mipmap/ic_search_menu"
-        android:title="@string/main_search"/>
+        android:title="@string/main_search"
+        app:showAsAction="always"/>
 </menu>

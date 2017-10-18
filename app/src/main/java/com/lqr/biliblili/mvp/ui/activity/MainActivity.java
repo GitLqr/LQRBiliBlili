@@ -9,6 +9,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -51,23 +52,25 @@ public class MainActivity extends MySupportActivity<MainPresenter> implements Ma
 
     private long mPreTime = 0;
 
+    @BindView(R.id.fl_root)
+    FrameLayout mFlRoot;
     @BindView(R.id.drawer)
     DrawerLayout mDrawer;
     @BindView(R.id.nav)
     NavigationView mNav;
 
     @OnClick(R.id.rl_setting)
-    public void toSetting() {
+    void toSetting() {
         ARouter.getInstance().build("/app/setting").navigation();
     }
 
     @OnClick(R.id.rl_theme)
-    public void toTheme() {
+    void toTheme() {
         ARouter.getInstance().build("/app/theme").navigation();
     }
 
     @OnClick(R.id.rl_change_skin)
-    public void changeSkin() {
+    void changeSkin() {
         // TODO: 2017/10/18 切换夜间/白天皮肤
     }
 
@@ -134,7 +137,8 @@ public class MainActivity extends MySupportActivity<MainPresenter> implements Ma
         } else {
             StatusBarUtil.setColorNoTranslucent(this, ArmsUtils.getColor(this, R.color.colorPrimary));
         }
-        mNav.getHeaderView(0).setPadding(0, DeviceUtils.getStatuBarHeight(this), 0, 0);
+        mFlRoot.setPadding(0, DeviceUtils.getStatuBarHeight(this), 0, 0);
+//        mNav.getHeaderView(0).setPadding(0, DeviceUtils.getStatuBarHeight(this), 0, 0);
     }
 
     private void initNavigationView() {
