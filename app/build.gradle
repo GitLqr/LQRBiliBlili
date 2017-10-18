@@ -45,8 +45,10 @@ dependencies {
 
     //support
     compile rootProject.ext.dependencies["appcompat-v7"]
-    compile(rootProject.ext.dependencies["cardview-v7"])
-
+    compile(rootProject.ext.dependencies["cardview-v7"]) {
+        exclude module: 'support-annotations'
+    }
+    
     compile 'me.jessyan:arms:2.2.3'
 
     // view
@@ -54,14 +56,18 @@ dependencies {
     compile(rootProject.ext.dependencies["FlycoTabLayout_Lib"])
 
     // tool
-    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
-    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
-    provided rootProject.ext.dependencies["javax.annotation"]
     compile rootProject.ext.dependencies["arouter"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+    annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
+        exclude module: 'support-annotations'
+        exclude module: 'butterknife-annotations'
+    }
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
+    provided rootProject.ext.dependencies["javax.annotation"]
     compile(rootProject.ext.dependencies["fragmentation"])
     compile(rootProject.ext.dependencies["fragmentation-core"])
     compile(rootProject.ext.dependencies["statusbarutil"])
+//    compile(rootProject.ext.dependencies["agentweb"])
 
     // test
     testCompile rootProject.ext.dependencies["junit"]

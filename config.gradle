@@ -94,6 +94,7 @@ ext {
             "fragmentation-swipeback"  : "me.yokeyword:fragmentation-swipeback:${version["fragmentationVersion"]}",
             "statusbarutil"            : "com.jaeger.statusbarutil:library:1.4.0",
             "systembartint"            : "com.readystatesoftware.systembartint:systembartint:1.0.3",
+            "agentweb"                 : "com.just.agentweb:agentweb:2.0.1",
 
             //test
             "junit"                    : "junit:junit:4.12",

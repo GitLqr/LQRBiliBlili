@@ -17,11 +17,19 @@
     <string name="theme">主题</string>
     <string name="at_night">夜间</string>
 
-    <!--MainActivity:底部导航栏-->
+    <!--NavHomeFragment:底部导航栏-->
     <string name="main_home">首页</string>
     <string name="main_category">分区</string>
     <string name="main_dynamic">动态</string>
     <string name="main_communicate">消息</string>
 
+    <!--toolbar-->
+    <string name="main_active">活动</string>
+    <string name="main_game">游戏</string>
+    <string name="main_download">下载</string>
+    <string name="main_search">搜索</string>
+    <string name="main_edit">编辑</string>
+
+    <string name="double_click_to_exit">再按一次退出</string>
     <string name="copy_right">Copyright © 2009-2017 bilibili</string>
 </resources>

@@ -49,6 +49,8 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 @Route(path = "/app/main")
 public class MainActivity extends MySupportActivity<MainPresenter> implements MainContract.View, NavigationView.OnNavigationItemSelectedListener {
 
+    private long mPreTime = 0;
+
     @BindView(R.id.drawer)
     DrawerLayout mDrawer;
     @BindView(R.id.nav)
@@ -297,7 +299,17 @@ public class MainActivity extends MySupportActivity<MainPresenter> implements Ma
             if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
                 pop();
             } else {
-                moveTaskToBack(false);
+                // 放置后台
+                // moveTaskToBack(false);
+
+                // 2秒内两次点击返回键退出应用
+                long nowTime = System.currentTimeMillis();
+                if (nowTime - mPreTime <= 2000) {
+                    ArmsUtils.makeText(this, ArmsUtils.getString(this, R.string.double_click_to_exit));
+                    mPreTime = nowTime;
+                } else {
+                    ArmsUtils.exitApp();
+                }
             }
         }
     }

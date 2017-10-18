@@ -2,9 +2,13 @@ package com.lqr.biliblili.mvp.ui.fragment.main;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.jess.arms.di.component.AppComponent;
 import com.lqr.biliblili.R;
 import com.lqr.biliblili.app.base.MySupportFragment;
@@ -32,11 +36,33 @@ public class MainHomeFragment extends MySupportFragment {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
+        setHasOptionsMenu(true);
     }
 
     @Override
     public void setData(Object data) {
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.main_home_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.main_active:
+                ARouter.getInstance().build("/app/web").withString("url", "www.qq.com").navigation();
+                break;
+            case R.id.main_game:
+                break;
+            case R.id.main_download:
+                break;
+            case R.id.main_search:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

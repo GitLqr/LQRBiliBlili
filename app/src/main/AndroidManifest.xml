@@ -50,6 +50,10 @@
             android:name=".mvp.ui.activity.ThemeActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".mvp.ui.activity.WebActivity"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
