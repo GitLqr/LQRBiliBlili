@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jess.arms.di.component.AppComponent;
+import com.lqr.biliblili.R;
 import com.lqr.biliblili.app.base.MySupportFragment;
 
 /**
@@ -25,7 +26,8 @@ public class NavVipOrderFragment extends MySupportFragment {
 
     @Override
     public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return null;
+        View view = inflater.inflate(R.layout.fragment_vip_order_nav, container, false);
+        return view;
     }
 
     @Override

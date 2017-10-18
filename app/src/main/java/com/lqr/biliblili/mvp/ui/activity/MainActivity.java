@@ -9,9 +9,9 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.jaeger.library.StatusBarUtil;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -36,6 +36,7 @@ import com.lqr.biliblili.mvp.ui.fragment.nav.NavVipOrderFragment;
 import java.util.TimerTask;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import me.yokeyword.fragmentation.ISupportFragment;
 import me.yokeyword.fragmentation.SupportFragment;
 
@@ -53,8 +54,20 @@ public class MainActivity extends MySupportActivity<MainPresenter> implements Ma
     @BindView(R.id.nav)
     NavigationView mNav;
 
-    @BindView(R.id.fl_content)
-    FrameLayout mFlContent;
+    @OnClick(R.id.rl_setting)
+    public void toSetting() {
+        ARouter.getInstance().build("/app/setting").navigation();
+    }
+
+    @OnClick(R.id.rl_theme)
+    public void toTheme() {
+        ARouter.getInstance().build("/app/theme").navigation();
+    }
+
+    @OnClick(R.id.rl_change_skin)
+    public void changeSkin() {
+        // TODO: 2017/10/18 切换夜间/白天皮肤
+    }
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
@@ -145,8 +158,11 @@ public class MainActivity extends MySupportActivity<MainPresenter> implements Ma
         switch (item.getItemId()) {
             case R.id.nav_home:
                 NavHomeFragment homeFragment = findFragment(NavHomeFragment.class);
-//                popTo(NavHomeFragment.class, false); // 与下一行代码功能一致。
-                start(homeFragment, SupportFragment.SINGLETASK);
+                if (homeFragment == null) {
+                    start(NavHomeFragment.newInstance(), SupportFragment.SINGLETASK);
+                } else {
+                    popTo(NavHomeFragment.class, false);
+                }
                 break;
             case R.id.nav_history:
                 NavHistoryFragment historyFragment = findFragment(NavHistoryFragment.class);

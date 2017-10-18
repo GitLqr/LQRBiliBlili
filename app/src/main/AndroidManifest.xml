@@ -29,14 +29,26 @@
             android:name="com.lqr.biliblili.app.GlobalConfiguration"
             android:value="ConfigModule"/>
 
-        <activity android:name=".mvp.ui.activity.MainActivity">
+        <activity
+            android:name=".mvp.ui.activity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.ui.activity.SplashActivity">
+        <activity
+            android:name=".mvp.ui.activity.SplashActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.SettingActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.ThemeActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

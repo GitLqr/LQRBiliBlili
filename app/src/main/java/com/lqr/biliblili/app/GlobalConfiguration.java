@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.di.module.GlobalConfigModule;
 import com.jess.arms.http.GlobalHttpHandler;
@@ -64,6 +65,7 @@ public class GlobalConfiguration implements ConfigModule {
                 initTimber();
                 initLeakCanary(application);
                 initFragmentation();
+                initARouter(application);
             }
 
             @Override
@@ -78,6 +80,7 @@ public class GlobalConfiguration implements ConfigModule {
         });
     }
 
+
     @Override
     public void injectActivityLifecycle(Context context, List<Application.ActivityLifecycleCallbacks> lifecycles) {
         //向Activity的生命周期中注入一些自定义逻辑
@@ -89,13 +92,22 @@ public class GlobalConfiguration implements ConfigModule {
         //向Fragment的生命周期中注入一些自定义逻辑
     }
 
+    private void initARouter(Application application) {
+        if (BuildConfig.LOG_DEBUG) {
+            ARouter.openDebug();
+            ARouter.openLog();
+            ARouter.printStackTrace(); // 打印日志的时候打印线程堆栈
+        }
+        ARouter.init(application);
+    }
+
     private void initFragmentation() {
         Fragmentation.builder()
                 // 设置 栈视图 模式为 悬浮球模式   SHAKE: 摇一摇唤出  默认NONE：隐藏， 仅在Debug环境生效
                 .stackViewMode(Fragmentation.BUBBLE)
                 // 开发环境：true时，遇到异常："Can not perform this action after onSaveInstanceState!"时，抛出，并Crash;
                 // 生产环境：false时，不抛出，不会Crash，会捕获，可以在handleException()里监听到
-//                .debug(BuildConfig.DEBUG)
+                .debug(BuildConfig.DEBUG)
                 // 生产环境时，捕获上述异常（避免crash），会捕获
                 // 建议在回调处上传下面异常到崩溃监控服务器
                 .handleException(new ExceptionHandler() {
@@ -107,6 +119,7 @@ public class GlobalConfiguration implements ConfigModule {
                 })
                 .install();
     }
+
 
     private void initLeakCanary(Application application) {
         //leakCanary内存泄露检查

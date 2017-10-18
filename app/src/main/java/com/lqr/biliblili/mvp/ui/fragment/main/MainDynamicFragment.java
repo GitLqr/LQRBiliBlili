@@ -1,4 +1,4 @@
-package com.lqr.biliblili.mvp.ui.fragment.nav;
+package com.lqr.biliblili.mvp.ui.fragment.main;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,12 +11,12 @@ import com.lqr.biliblili.app.base.MySupportFragment;
 
 /**
  * @创建者 CSDN_LQR
- * @描述 历史记录
+ * @描述 动态
  */
-public class NavHistoryFragment extends MySupportFragment {
+public class MainDynamicFragment extends MySupportFragment {
 
-    public static NavHistoryFragment newInstance() {
-        return new NavHistoryFragment();
+    public static MainDynamicFragment newInstance() {
+        return new MainDynamicFragment();
     }
 
     @Override
@@ -26,7 +26,7 @@ public class NavHistoryFragment extends MySupportFragment {
 
     @Override
     public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_history_nav, container, false);
+        View view = inflater.inflate(R.layout.fragment_dynamic_main, container, false);
         return view;
     }
 

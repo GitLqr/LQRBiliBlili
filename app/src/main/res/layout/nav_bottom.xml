@@ -6,6 +6,7 @@
               android:orientation="horizontal">
 
     <RelativeLayout
+        android:id="@+id/rl_setting"
         android:layout_width="0dp"
         android:layout_height="@dimen/nav_bottom_rect_height"
         android:layout_weight="1">
@@ -31,6 +32,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_theme"
         android:layout_width="0dp"
         android:layout_height="@dimen/nav_bottom_rect_height"
         android:layout_weight="1">
@@ -56,6 +58,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_change_skin"
         android:layout_width="0dp"
         android:layout_height="@dimen/nav_bottom_rect_height"
         android:layout_weight="1">

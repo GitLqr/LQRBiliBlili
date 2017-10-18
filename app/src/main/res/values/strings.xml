@@ -18,10 +18,10 @@
     <string name="at_night">夜间</string>
 
     <!--MainActivity:底部导航栏-->
-    <string name="bottom_bar_home">首页</string>
-    <string name="bottom_bar_category">分区</string>
-    <string name="bottom_bar_dynamic">动态</string>
-    <string name="bottom_bar_communicate">消息</string>
+    <string name="main_home">首页</string>
+    <string name="main_category">分区</string>
+    <string name="main_dynamic">动态</string>
+    <string name="main_communicate">消息</string>
 
     <string name="copy_right">Copyright © 2009-2017 bilibili</string>
 </resources>
