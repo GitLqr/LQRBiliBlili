@@ -8,10 +8,11 @@
     <dimen name="nav_bottom_text_margin_left">5px</dimen>
 
     <!--NavHomeFragment:底部导航栏-->
-    <dimen name="bottom_bar_icon_nav_home">22dp</dimen>
-    <dimen name="bottom_bar_text_nav_home">12sp</dimen>
+    <dimen name="bottom_bar_icon_nav_home">44px</dimen>
+    <dimen name="bottom_bar_text_nav_home">24px</dimen>
 
-    <!--MainHomeFragment:顶部导航栏-->
+    <!--MainHomeFragment/MainCategoryFragment/MainDynamivFragment/MainCommunicateFragment:顶部导航栏-->
+    <dimen name="toolbar_title_size">36px</dimen>
     <dimen name="tab_indicator_height_main_home">5px</dimen>
     <dimen name="tab_text_size_main_home">22px</dimen>
 

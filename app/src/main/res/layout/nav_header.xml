@@ -28,19 +28,19 @@
                 android:background="@mipmap/bili_drawerbg_not_logined"/>
         </LinearLayout>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_header"
+        <ImageView
+            android:id="@+id/iv_header"
             android:layout_width="128px"
             android:layout_height="128px"
             android:layout_marginLeft="35px"
             android:layout_marginTop="20px"
-            android:src="@mipmap/ico_user_default"/>
+            android:src="@mipmap/bili_default_avatar"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/civ_header"
-            android:layout_below="@id/civ_header"
+            android:layout_alignLeft="@id/iv_header"
+            android:layout_below="@id/iv_header"
             android:layout_marginTop="20px"
             android:text="@string/click_avtor_login"
             android:textColor="@color/nav_header_text"

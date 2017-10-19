@@ -1,8 +1,7 @@
 package com.lqr.biliblili.mvp.ui.fragment.main;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -13,11 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.flyco.tablayout.SlidingTabLayout;
 import com.jess.arms.di.component.AppComponent;
-import com.jess.arms.utils.ArmsUtils;
 import com.lqr.biliblili.R;
 import com.lqr.biliblili.app.base.MySupportFragment;
 import com.lqr.biliblili.app.tag.MainTag;
+import com.lqr.biliblili.mvp.ui.adapter.MainHomeFragmentAdapter;
 
 import org.simple.eventbus.EventBus;
 
@@ -30,10 +30,13 @@ import butterknife.OnClick;
  */
 public class MainHomeFragment extends MySupportFragment {
 
+
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.tablayout)
-    TabLayout mTabLayout;
+    SlidingTabLayout mTabLayout;
+    @BindView(R.id.viewpager)
+    ViewPager mViewPager;
 
     @OnClick(R.id.ll_toolbar)
     void openDrawer() {
@@ -49,26 +52,29 @@ public class MainHomeFragment extends MySupportFragment {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // 要让Fragment中的onCreateOptionsMenu()被回调，必须调用setHasOptionsMenu(true);
+        setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.fragment_home_main, container, false);
         return view;
     }
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        initToolbar();
-        initTabLayout();
+        initTabLayoutAndViewPager();
     }
 
 
     @Override
     public void setData(Object data) {
 
+    }
+
+    @Override
+    public void onSupportVisible() {
+        super.onSupportVisible();
+        // 必须让Fragment中的Toolbar成为Activity的ActionBar，否则setHasOptionsMenu(true)就没有意义了。
+        ((AppCompatActivity) _mActivity).setSupportActionBar(mToolbar);
     }
 
     @Override
@@ -94,18 +100,8 @@ public class MainHomeFragment extends MySupportFragment {
         return super.onOptionsItemSelected(item);
     }
 
-
-    private void initToolbar() {
-        // 必须让Fragment中的Toolbar成为Activity的ActionBar，否则setHasOptionsMenu(true)就没有意义了。
-        ((AppCompatActivity) _mActivity).setSupportActionBar(mToolbar);
-        // 要让Fragment中的onCreateOptionsMenu()被回调，必须调用setHasOptionsMenu(true);
-        setHasOptionsMenu(true);
-    }
-
-    private void initTabLayout() {
-        String[] tabTitles = ArmsUtils.getStringArray(_mActivity, R.array.tab_titles_main_home);
-        for (int i = 0; i < tabTitles.length; i++) {
-            mTabLayout.addTab(mTabLayout.newTab().setText(tabTitles[i]));
-        }
+    private void initTabLayoutAndViewPager() {
+        mViewPager.setAdapter(new MainHomeFragmentAdapter(getChildFragmentManager(), _mActivity));
+        mTabLayout.setViewPager(mViewPager);
     }
 }
