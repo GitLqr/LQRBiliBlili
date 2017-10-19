@@ -30,15 +30,15 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/toolbar_back_ico_size"
                         android:layout_height="wrap_content"
                         android:src="@mipmap/ic_drawer_home"/>
 
                     <ImageView
-                        android:layout_width="80px"
-                        android:layout_height="80px"
-                        android:layout_marginLeft="32px"
-                        android:layout_marginRight="16px"
+                        android:layout_width="@dimen/toolbar_avatar_size"
+                        android:layout_height="@dimen/toolbar_avatar_size"
+                        android:layout_marginLeft="@dimen/toolbar_avatar_margin_left"
+                        android:layout_marginRight="@dimen/toolbar_avatar_margin_right"
                         android:src="@mipmap/ico_user_default"/>
 
                     <TextView

@@ -68,6 +68,7 @@ dependencies {
     compile(rootProject.ext.dependencies["fragmentation-core"])
     compile(rootProject.ext.dependencies["statusbarutil"])
     compile(rootProject.ext.dependencies["agentweb"])
+    compile(rootProject.ext.dependencies["brvah"])
 
     // test
     testCompile rootProject.ext.dependencies["junit"]

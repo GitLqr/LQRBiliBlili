@@ -1,5 +1,6 @@
 package com.lqr.biliblili.mvp.ui.fragment.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,10 @@ import com.jess.arms.di.component.AppComponent;
 import com.lqr.biliblili.R;
 import com.lqr.biliblili.app.base.MySupportFragment;
 import com.lqr.biliblili.app.tag.MainTag;
+import com.lqr.biliblili.di.component.DaggerMainCategoryComponent;
+import com.lqr.biliblili.di.module.MainCategoryModule;
+import com.lqr.biliblili.mvp.contract.MainCategoryContract;
+import com.lqr.biliblili.mvp.presenter.MainCategoryPresenter;
 
 import org.simple.eventbus.EventBus;
 
@@ -25,7 +30,7 @@ import butterknife.OnClick;
  * @创建者 CSDN_LQR
  * @描述 分区
  */
-public class MainCategoryFragment extends MySupportFragment {
+public class MainCategoryFragment extends MySupportFragment<MainCategoryPresenter> implements MainCategoryContract.View {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -43,7 +48,11 @@ public class MainCategoryFragment extends MySupportFragment {
 
     @Override
     public void setupFragmentComponent(AppComponent appComponent) {
-
+        DaggerMainCategoryComponent.builder()
+                .appComponent(appComponent)
+                .mainCategoryModule(new MainCategoryModule(this))
+                .build()
+                .inject(this);
     }
 
     @Override
@@ -60,7 +69,6 @@ public class MainCategoryFragment extends MySupportFragment {
 
     @Override
     public void setData(Object data) {
-
     }
 
     @Override
@@ -88,4 +96,28 @@ public class MainCategoryFragment extends MySupportFragment {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showMessage(String message) {
+
+    }
+
+    @Override
+    public void launchActivity(Intent intent) {
+
+    }
+
+    @Override
+    public void killMyself() {
+
+    }
 }

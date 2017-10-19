@@ -15,7 +15,8 @@
     <com.lqr.biliblili.mvp.ui.widget.AutoCommonTabLayout
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="112px"
+        android:layout_height="100px"
+        android:paddingTop="4px"
         app:tl_iconHeight="@dimen/bottom_bar_icon_nav_home"
         app:tl_iconWidth="@dimen/bottom_bar_icon_nav_home"
         app:tl_tab_space_equal="true"

@@ -1,13 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<com.zhy.autolayout.AutoFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_dynamic"/>
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</LinearLayout>
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                android:contentInsetStart="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <LinearLayout
+                    android:id="@+id/ll_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/toolbar_back_ico_size"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_drawer_home"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/toolbar_avatar_size"
+                        android:layout_height="@dimen/toolbar_avatar_size"
+                        android:layout_marginLeft="@dimen/toolbar_avatar_margin_left"
+                        android:layout_marginRight="@dimen/toolbar_avatar_margin_right"
+                        android:src="@mipmap/ico_user_default"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="182px"
+                        android:maxLines="1"
+                        android:text="@string/main_dynamic"
+                        android:textColor="@color/toolbar_title_fragment"
+                        android:textSize="@dimen/toolbar_title_size"/>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <!--已登录-->
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        <!--未登录-->
+        <RelativeLayout
+            android:id="@+id/ll_need_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="550px"
+                android:layout_height="500px"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="246px"
+                android:src="@mipmap/img_home_no_login"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="710px"
+                android:gravity="center"
+                android:text="@string/tip_no_login_dynamic"
+                android:textColor="@color/tip_no_login_dynamic"
+                android:textSize="32px"/>
+
+            <Button
+                android:layout_width="290px"
+                android:layout_height="90px"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="880px"
+                android:background="@drawable/shape_btn_need_login"
+                android:text="@string/login"
+                android:textColor="@color/btn_no_login_text_dynamic"
+                android:textSize="30px"/>
+
+        </RelativeLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</com.zhy.autolayout.AutoFrameLayout>

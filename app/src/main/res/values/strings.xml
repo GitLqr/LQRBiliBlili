@@ -38,6 +38,9 @@
         <item>专栏</item>
     </string-array>
 
+    <string name="login">登录</string>
+    <string name="tip_no_login_dynamic">你还没有登录哦~\n赶快登录打开新世界的大门</string>
+    <string name="tip_no_login_communicate">未登录无法查看消息哦\n点击登录，与小伙伴愉快交流吧</string>
     <string name="double_click_to_exit">再按一次退出</string>
     <string name="copy_right">Copyright © 2009-2017 bilibili</string>
 </resources>

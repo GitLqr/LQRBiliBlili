@@ -4,14 +4,14 @@
     <color name="colorPrimaryDark">#b85671</color>
     <color name="colorAccent">@android:color/black</color>
 
-    <color name="white">#ffffff</color>
+    <color name="white">#FFFFFF</color>
 
-    <color name="main_bg">#ffffff</color>
-    <color name="fragment_bg">#F4F4F4</color>
+    <color name="main_bg">#FFFFFF</color>
+    <color name="fragment_bg">#EAEAEA</color>
 
     <!--MainActivity:侧边栏-->
-    <color name="nav_header_text">#ffffff</color>
-    <color name="nav_menu_bg">#ffffff</color>
+    <color name="nav_header_text">#FFFFFF</color>
+    <color name="nav_menu_bg">#FFFFFF</color>
     <color name="nav_bottom_line">#DDDDDD</color>
     <color name="nav_bottom_text">#464646</color>
 
@@ -21,9 +21,13 @@
     <color name="bottom_bar_text_unselect_nav_home">#87888A</color>
 
     <!--MainHomeFragment/MainCategoryFragment/MainDynamivFragment/MainCommunicateFragment:顶部导航栏-->
-    <color name="toolbar_title_fragment">#ffffff</color>
-    <color name="tab_indicator_fragment">#ffffff</color>
-    <color name="tab_text_fragment">#ffffff</color>
+    <color name="toolbar_title_fragment">#FFFFFF</color>
+    <color name="tab_indicator_fragment">#FFFFFF</color>
+    <color name="tab_text_fragment">#FFFFFF</color>
     <color name="tab_text_selected_fragment">#fb7299</color>
+    <color name="tip_no_login_dynamic">#404040</color>
+    <color name="btn_no_login_text_dynamic">#FFFFFF</color>
+    <color name="btn_no_login_bg_dynamic">#FB7299</color>
+    <color name="btn_no_login_text_communicate">#BBBBBB</color>
 
 </resources>
