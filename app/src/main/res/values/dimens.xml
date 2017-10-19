@@ -20,7 +20,10 @@
     <dimen name="tab_indicator_height_main_home">5px</dimen>
     <dimen name="tab_text_size_main_home">22px</dimen>
 
+    <!--间距-->
+    <dimen name="margin_size_1">30px</dimen>
 
     <!--修改NavigationView中的Item的Icon大小-->
     <dimen name="design_navigation_icon_size">24dp</dimen>
+
 </resources>

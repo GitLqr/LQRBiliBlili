@@ -30,4 +30,9 @@
     <color name="btn_no_login_bg_dynamic">#FB7299</color>
     <color name="btn_no_login_text_communicate">#BBBBBB</color>
 
+    <!--LiveFragment-->
+    <color name="header_bg_live">#FFFFFF</color>
+    <color name="et_search_bg_live">#E7E7E7</color>
+    <color name="et_search_hint_live">#999999</color>
+
 </resources>

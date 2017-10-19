@@ -55,6 +55,7 @@ ext {
             "vlayout"                  : "com.alibaba.android:vlayout:1.1.0@aar",
             "circleimageview"          : "de.hdodenhof:circleimageview:2.2.0",
             "FlycoTabLayout_Lib"       : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
+            "bga-banner"               : "cn.bingoogolapple:bga-banner:2.1.7@aar",
 
             //rx1
             "rxandroid"                : "io.reactivex:rxandroid:1.2.1",
@@ -88,7 +89,7 @@ ext {
             "arouter"                  : "com.alibaba:arouter-api:1.2.2",
             "arouter-compiler"         : "com.alibaba:arouter-compiler:1.1.3",
             "progressmanager"          : "me.jessyan:progressmanager:1.3.3",
-            "retrofit-url-manager"     : "me.jessyan:retrofit-url-manager:1.0.5",
+            "retrofit-url-manager"     : "me.jessyan:retrofit-url-manager:1.1.0",
             "fragmentation"            : "me.yokeyword:fragmentation:${version["fragmentationVersion"]}",
             "fragmentation-core"       : "me.yokeyword:fragmentation-core:${version["fragmentationVersion"]}",
             "fragmentation-swipeback"  : "me.yokeyword:fragmentation-swipeback:${version["fragmentationVersion"]}",

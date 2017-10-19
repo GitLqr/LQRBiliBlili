@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.jess.arms.base.delegate.AppLifecycles;
+import com.jess.arms.di.module.ClientModule;
 import com.jess.arms.di.module.GlobalConfigModule;
 import com.jess.arms.http.GlobalHttpHandler;
 import com.jess.arms.integration.ConfigModule;
@@ -19,11 +20,14 @@ import org.simple.eventbus.EventBus;
 
 import java.util.List;
 
+import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 import me.yokeyword.fragmentation.Fragmentation;
 import me.yokeyword.fragmentation.helper.ExceptionHandler;
 import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import retrofit2.Retrofit;
 import timber.log.Timber;
 
 public class GlobalConfiguration implements ConfigModule {
@@ -36,6 +40,14 @@ public class GlobalConfiguration implements ConfigModule {
         //使用builder可以为框架配置一些配置信息
         builder
 //                .baseurl(Api.APP_DOMAIN)
+                .retrofitConfiguration(new ClientModule.RetrofitConfiguration() {
+                    @Override
+                    public void configRetrofit(Context context, Retrofit.Builder builder) {
+                        // 配置多BaseUrl支持
+                        builder.client(RetrofitUrlManager.getInstance().with(new OkHttpClient.Builder())
+                                .build());
+                    }
+                })
                 // 当数据无法加载时，使用过期数据
                 .rxCacheConfiguration((context1, builder1) -> builder1.useExpiredDataIfLoaderNotAvailable(true))
                 .globalHttpHandler(new GlobalHttpHandler() {

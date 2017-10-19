@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/header_bg_live"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_size_1"
+        android:layout_marginRight="@dimen/margin_size_1"
+        android:layout_marginTop="@dimen/margin_size_1"
+        android:background="@drawable/shape_et_search_live_main_home"
+        android:drawableLeft="@mipmap/ic_search_bar"
+        android:hint="搜索房间或主播"
+        android:textColorHint="@color/et_search_hint_live"
+        android:textSize="24px"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="300px"
+        android:layout_marginLeft="@dimen/margin_size_1"
+        android:layout_marginRight="@dimen/margin_size_1"
+        android:layout_marginTop="@dimen/margin_size_1"
+        app:cardCornerRadius="5dp">
+
+        <cn.bingoogolapple.bgabanner.BGABanner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:banner_pageChangeDuration="1000"
+            app:banner_pointAutoPlayAble="false"
+            app:banner_pointContainerBackground="@android:color/transparent"
+            app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+            app:banner_pointTopBottomMargin="15dp"
+            app:banner_transitionEffect="alpha"/>
+    </android.support.v7.widget.CardView>
+
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/ctl_category"
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        app:tl_iconHeight="48px"
+        app:tl_iconWidth="48px"
+        app:tl_tab_space_equal="true"
+        app:tl_textsize="24px"/>
+
+</com.zhy.autolayout.AutoLinearLayout>
