@@ -44,9 +44,9 @@
         android:id="@+id/ctl_category"
         android:layout_width="match_parent"
         android:layout_height="150px"
-        app:tl_iconHeight="48px"
-        app:tl_iconWidth="48px"
+        app:tl_iconHeight="24dp"
+        app:tl_iconWidth="24dp"
         app:tl_tab_space_equal="true"
-        app:tl_textsize="24px"/>
+        app:tl_textsize="12sp"/>
 
 </com.zhy.autolayout.AutoLinearLayout>

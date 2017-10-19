@@ -313,7 +313,7 @@ public class MainActivity extends MySupportActivity<MainPresenter> implements Ma
 
                 // 2秒内两次点击返回键退出应用
                 long nowTime = System.currentTimeMillis();
-                if (nowTime - mPreTime <= 2000) {
+                if (nowTime - mPreTime > 2000) {
                     ArmsUtils.makeText(this, ArmsUtils.getString(this, R.string.double_click_to_exit));
                     mPreTime = nowTime;
                 } else {

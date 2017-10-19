@@ -17,6 +17,8 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.lqr.biliblili.R;
 import com.lqr.biliblili.app.base.MySupportFragment;
+import com.lqr.biliblili.di.component.DaggerLiveComponent;
+import com.lqr.biliblili.di.module.LiveModule;
 import com.lqr.biliblili.mvp.contract.LiveContract;
 import com.lqr.biliblili.mvp.presenter.LivePresenter;
 import com.lqr.biliblili.mvp.ui.widget.TabEntity;
@@ -46,7 +48,11 @@ public class LiveFragment extends MySupportFragment<LivePresenter> implements Li
 
     @Override
     public void setupFragmentComponent(AppComponent appComponent) {
-
+        DaggerLiveComponent.builder()
+                .liveModule(new LiveModule(this))
+                .appComponent(appComponent)
+                .build()
+                .inject(this);
     }
 
     @Override
