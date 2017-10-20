@@ -12,6 +12,7 @@
     <dimen name="bottom_bar_text_nav_home">11sp</dimen>
 
     <!--MainHomeFragment/MainCategoryFragment/MainDynamivFragment/MainCommunicateFragment:顶部导航栏-->
+    <dimen name="toolbar_actionbar_size">96px</dimen>
     <dimen name="toolbar_back_ico_size">16px</dimen>
     <dimen name="toolbar_avatar_size">80px</dimen>
     <dimen name="toolbar_avatar_margin_left">32px</dimen>

@@ -75,6 +75,7 @@ public class MainHomeFragment extends MySupportFragment {
         super.onSupportVisible();
         // 必须让Fragment中的Toolbar成为Activity的ActionBar，否则setHasOptionsMenu(true)就没有意义了。
         ((AppCompatActivity) _mActivity).setSupportActionBar(mToolbar);
+        ((AppCompatActivity) _mActivity).getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     @Override

@@ -3,20 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/fragment_bg">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.design.widget.AppBarLayout
+        <com.jess.arms.widget.autolayout.AutoAppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <android.support.v7.widget.Toolbar
+            <com.jess.arms.widget.autolayout.AutoToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="@dimen/toolbar_actionbar_size"
                 android:background="@color/colorPrimary"
                 android:contentInsetStart="0dp"
                 app:contentInsetStart="0dp"
@@ -24,7 +25,7 @@
 
                 <LinearLayout
                     android:id="@+id/ll_toolbar"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
@@ -42,27 +43,25 @@
                         android:layout_marginRight="@dimen/toolbar_avatar_margin_right"
                         android:src="@mipmap/ico_user_default"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="182px"
-                        android:maxLines="1"
-                        android:text="@string/main_category"
-                        android:textColor="@color/toolbar_title_fragment"
-                        android:textSize="@dimen/toolbar_title_size"/>
                 </LinearLayout>
 
-            </android.support.v7.widget.Toolbar>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:maxLines="1"
+                    android:text="@string/main_category"
+                    android:textColor="@color/toolbar_title_fragment"
+                    android:textSize="@dimen/toolbar_title_size"/>
+            </com.jess.arms.widget.autolayout.AutoToolbar>
 
 
-        </android.support.design.widget.AppBarLayout>
+        </com.jess.arms.widget.autolayout.AutoAppBarLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/fragment_bg"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 
