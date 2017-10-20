@@ -50,6 +50,7 @@ public class LiveFragment extends MySupportFragment<LivePresenter> implements Li
     SwipeRefreshLayout mRefreshLayout;
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;
+    private View mRootView;
 
     public static LiveFragment newInstance() {
         return new LiveFragment();
@@ -66,8 +67,9 @@ public class LiveFragment extends MySupportFragment<LivePresenter> implements Li
 
     @Override
     public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_live_main_home, container, false);
-        return view;
+        if (mRootView == null)
+            mRootView = inflater.inflate(R.layout.fragment_live_main_home, container, false);
+        return mRootView;
     }
 
     @Override
@@ -155,7 +157,6 @@ public class LiveFragment extends MySupportFragment<LivePresenter> implements Li
 
     @Override
     public void setHeaderView(LiveMultiItemAdapter adapter) {
-        adapter.removeAllHeaderView();
         adapter.addHeaderView(mHeaderView);
     }
 
@@ -174,7 +175,6 @@ public class LiveFragment extends MySupportFragment<LivePresenter> implements Li
 
     @Override
     public void setFooterView(LiveMultiItemAdapter adapter) {
-        adapter.removeAllFooterView();
         adapter.addFooterView(mFooterView);
     }
 }
