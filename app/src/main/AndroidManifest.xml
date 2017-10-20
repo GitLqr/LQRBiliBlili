@@ -54,6 +54,10 @@
             android:name=".mvp.ui.activity.WebActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".mvp.ui.activity.CustomerViewActivity"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

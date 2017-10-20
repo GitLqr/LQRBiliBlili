@@ -32,7 +32,17 @@
 
     <!--LiveFragment-->
     <color name="header_bg_live">#FFFFFF</color>
+    <color name="header_category_text">#373737</color>
     <color name="et_search_bg_live">#E7E7E7</color>
     <color name="et_search_hint_live">#999999</color>
+    <color name="title_text_live">#404040</color>
+    <color name="title_count_text_live">#fb7299</color>
+    <color name="item_owner_name_text_live">#FFFFFF</color>
+    <color name="item_title_text_live">#333333</color>
+    <color name="item_item_online_text_live">#AAAAAA</color>
+    <color name="banner_title_text_live">#333333</color>
+    <color name="bottom_text_live">#fb7299</color>
+    <color name="footer_all_live_btn_bg_live">#FAFAFA</color>
+    <color name="footer_all_live_btn_stroke_live">#BFBFBF</color>
 
 </resources>

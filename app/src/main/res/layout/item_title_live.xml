@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/margin_size_top_2">
+
+    <ImageView
+        android:id="@+id/iv_title_icon_src"
+        android:layout_width="48px"
+        android:layout_height="48px"
+        android:layout_marginLeft="@dimen/margin_size_1_left_right"
+        android:layout_marginRight="8px"/>
+
+    <TextView
+        android:id="@+id/tv_title_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/title_text_live"
+        android:textSize="@dimen/title_text_live"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="当前"
+        android:textColor="@color/title_text_live"
+        android:textSize="@dimen/title_text_live"/>
+
+    <TextView
+        android:id="@+id/tv_title_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1008"
+        android:textColor="@color/title_count_text_live"
+        android:textSize="@dimen/title_text_live"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="个直播，进去看看"
+        android:textColor="@color/title_text_live"
+        android:textSize="@dimen/title_text_live"/>
+
+    <ImageView
+        android:id="@+id/iv_enter"
+        android:layout_width="36px"
+        android:layout_height="36px"
+        android:layout_marginLeft="5px"
+        android:layout_marginRight="@dimen/margin_size_1_left_right"
+        android:src="@mipmap/ic_live_home_more"/>
+</com.zhy.autolayout.AutoLinearLayout>

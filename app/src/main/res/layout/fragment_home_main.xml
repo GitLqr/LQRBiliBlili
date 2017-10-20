@@ -54,7 +54,7 @@
             <com.lqr.biliblili.mvp.ui.widget.AutoSlidingTabLayout
                 android:id="@+id/tablayout"
                 android:layout_width="match_parent"
-                android:layout_height="80px"
+                android:layout_height="82px"
                 app:tl_indicator_margin_left="25px"
                 app:tl_indicator_margin_right="25px"
                 app:tl_tab_space_equal="true"/>

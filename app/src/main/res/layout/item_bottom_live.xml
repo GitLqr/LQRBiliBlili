@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.lqr.biliblili.mvp.ui.widget.LQRRefreshButton
+        android:id="@+id/btn_refresh"
+        android:layout_width="236px"
+        android:layout_height="65px"
+        android:layout_gravity="center"
+        android:layout_marginBottom="6px"
+        android:layout_marginTop="16px"
+        app:refresh_btn_borderRadius="50px"
+        app:refresh_btn_iconSize="32px"
+        app:refresh_btn_text="点击换一批"
+        app:refresh_btn_textColor="@color/bottom_text_live"
+        app:refresh_btn_textSize="24px"/>
+
+</com.zhy.autolayout.AutoFrameLayout>

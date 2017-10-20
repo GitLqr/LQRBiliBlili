@@ -11,6 +11,10 @@ import com.lqr.biliblili.app.data.api.service.LiveService;
 import com.lqr.biliblili.app.data.entity.Result;
 import com.lqr.biliblili.app.data.entity.live.GetAllListData;
 import com.lqr.biliblili.mvp.contract.LiveContract;
+import com.lqr.biliblili.mvp.ui.adapter.entity.LiveMultiItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -30,10 +34,122 @@ public class LiveModel extends BaseModel implements LiveContract.Model {
         RetrofitUrlManager.getInstance().putDomain("live", Api.LIVE_BASE_URL);
     }
 
+    @Override
     public Observable<Result<GetAllListData>> getLiveList() {
         // TODO: 2017/10/19 加上数据缓存
         return mRepositoryManager.obtainRetrofitService(LiveService.class)
                 .getLiveList();
+    }
+
+    @Override
+    public List<LiveMultiItem> parseRecommendData(GetAllListData getAllListData) {
+        List<LiveMultiItem> data = new ArrayList<>();
+        GetAllListData.RecommendDataBean recommend_data = getAllListData.getRecommend_data();
+        // 推荐
+        if (recommend_data != null) {
+            // TITLE
+            GetAllListData.RecommendDataBean.PartitionBean partition = recommend_data.getPartition();
+            if (partition != null) {
+                LiveMultiItem item = new LiveMultiItem();
+                item.setItemType(LiveMultiItem.TITLE);
+                item.setTitleIconSrc(partition.getSub_icon().getSrc());
+                item.setTitleName(partition.getName());
+                item.setTitleCount(partition.getCount());
+                data.add(item);
+            }
+            // ITEM
+            List<GetAllListData.RecommendDataBean.LivesBean> lives = recommend_data.getLives();
+            if (lives != null) {
+                GetAllListData.RecommendDataBean.LivesBean live;
+                for (int i = 0; i < 6; i++) {
+                    live = lives.get(i);
+                    LiveMultiItem item = new LiveMultiItem();
+                    item.setItemType(LiveMultiItem.ITEM);
+                    item.setOdd((i % 2 == 0));
+                    item.setItemCoverSrc(live.getCover().getSrc());
+                    item.setItemOwnerName(live.getOwner().getName());
+                    item.setItemTitle(live.getTitle());
+                    item.setItemSubTitle(live.getArea_v2_name());
+                    item.setItemOnline(live.getOnline());
+                    data.add(item);
+                }
+            }
+            // BANNER
+            List<GetAllListData.RecommendDataBean.BannerDataBean> banner_data = recommend_data.getBanner_data();
+            if (banner_data != null) {
+                for (int i = 0; i < banner_data.size(); i++) {
+                    GetAllListData.RecommendDataBean.BannerDataBean bannerDataBean = banner_data.get(i);
+                    LiveMultiItem item = new LiveMultiItem();
+                    item.setItemType(LiveMultiItem.BANNER);
+                    item.setBannerTitle(bannerDataBean.getTitle());
+                    item.setBannerCoverSrc(bannerDataBean.getCover().getSrc());
+                    data.add(item);
+                }
+            }
+            // ITEM
+            if (lives != null) {
+                GetAllListData.RecommendDataBean.LivesBean live;
+                for (int i = 6; i < 12; i++) {
+                    live = lives.get(i);
+                    LiveMultiItem item = new LiveMultiItem();
+                    item.setItemType(LiveMultiItem.ITEM);
+                    item.setOdd((i % 2 == 0));
+                    item.setItemCoverSrc(live.getCover().getSrc());
+                    item.setItemOwnerName(live.getOwner().getName());
+                    item.setItemTitle(live.getTitle());
+                    item.setItemSubTitle(live.getArea_v2_name());
+                    item.setItemOnline(live.getOnline());
+                    data.add(item);
+                }
+            }
+            // BOTTOM
+            LiveMultiItem item = new LiveMultiItem();
+            item.setItemType(LiveMultiItem.BOTTOM);
+            data.add(item);
+        }
+        return data;
+    }
+
+    @Override
+    public List<LiveMultiItem> parsePartitions(GetAllListData getAllListData) {
+        List<LiveMultiItem> data = new ArrayList<>();
+        List<GetAllListData.PartitionsBean> partitions = getAllListData.getPartitions();
+        if (partitions != null) {
+            // 娱乐、游戏、手游、绘画
+            for (GetAllListData.PartitionsBean partitionsBean : partitions) {
+                // TITLE
+                {
+                    LiveMultiItem item = new LiveMultiItem();
+                    item.setItemType(LiveMultiItem.TITLE);
+                    item.setTitleIconSrc(partitionsBean.getPartition().getSub_icon().getSrc());
+                    item.setTitleName(partitionsBean.getPartition().getName());
+                    item.setTitleCount(partitionsBean.getPartition().getCount());
+                    data.add(item);
+                }
+                // ITEM
+                List<GetAllListData.PartitionsBean.LivesBeanX> lives = partitionsBean.getLives();
+                if (lives != null) {
+                    GetAllListData.PartitionsBean.LivesBeanX live;
+                    for (int i = 0; i < 6; i++) {
+                        live = lives.get(i);
+                        LiveMultiItem item = new LiveMultiItem();
+                        item.setItemType(LiveMultiItem.ITEM);
+                        item.setOdd((i % 2 == 0));
+                        item.setItemCoverSrc(live.getFace());
+                        item.setItemOwnerName(live.getUname());
+                        item.setItemTitle(live.getTitle());
+                        item.setItemSubTitle(live.getArea_name());
+                        item.setItemOnline(live.getOnline());
+                        data.add(item);
+                    }
+                }
+                // BOTTOM
+                LiveMultiItem item = new LiveMultiItem();
+                item.setItemType(LiveMultiItem.BOTTOM);
+                data.add(item);
+            }
+        }
+        return data;
     }
 
     @Override

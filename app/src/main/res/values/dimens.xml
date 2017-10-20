@@ -12,7 +12,7 @@
     <dimen name="bottom_bar_text_nav_home">11sp</dimen>
 
     <!--MainHomeFragment/MainCategoryFragment/MainDynamivFragment/MainCommunicateFragment:顶部导航栏-->
-    <dimen name="toolbar_actionbar_size">96px</dimen>
+    <dimen name="toolbar_actionbar_size">116px</dimen>
     <dimen name="toolbar_back_ico_size">16px</dimen>
     <dimen name="toolbar_avatar_size">80px</dimen>
     <dimen name="toolbar_avatar_margin_left">32px</dimen>
@@ -21,8 +21,18 @@
     <dimen name="tab_indicator_height_main_home">5px</dimen>
     <dimen name="tab_text_size_main_home">22px</dimen>
 
+    <!--LiveFragment-->
+    <dimen name="card_view_radius_live">8px</dimen>
+    <dimen name="card_view_elevation_live">2px</dimen>
+    <dimen name="title_text_live">24px</dimen>
+    <dimen name="item_text_margin_live">14px</dimen>
+    <dimen name="banner_text_margin_live">14px</dimen>
+
     <!--间距-->
-    <dimen name="margin_size_1">30px</dimen>
+    <dimen name="margin_size_top_1">23px</dimen>
+    <dimen name="margin_size_top_2">26px</dimen>
+    <dimen name="margin_size_1_left_right">24px</dimen>
+    <dimen name="margin_size_2_left_right">28px</dimen>
 
     <!--修改NavigationView中的Item的Icon大小-->
     <dimen name="design_navigation_icon_size">24dp</dimen>

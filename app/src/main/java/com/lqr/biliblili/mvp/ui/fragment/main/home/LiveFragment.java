@@ -3,12 +3,15 @@ package com.lqr.biliblili.mvp.ui.fragment.main.home;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
@@ -21,9 +24,11 @@ import com.lqr.biliblili.di.component.DaggerLiveComponent;
 import com.lqr.biliblili.di.module.LiveModule;
 import com.lqr.biliblili.mvp.contract.LiveContract;
 import com.lqr.biliblili.mvp.presenter.LivePresenter;
+import com.lqr.biliblili.mvp.ui.adapter.LiveMultiItemAdapter;
 import com.lqr.biliblili.mvp.ui.widget.TabEntity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import cn.bingoogolapple.bgabanner.BGABanner;
@@ -38,7 +43,11 @@ public class LiveFragment extends MySupportFragment<LivePresenter> implements Li
     private EditText mEtSearch;
     private BGABanner mBanner;
     private CommonTabLayout mCtlCategory;
+    private View mFooterView;
+    private Button mBtnAllLive;
 
+    @BindView(R.id.refresh_layout)
+    SwipeRefreshLayout mRefreshLayout;
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;
 
@@ -63,10 +72,12 @@ public class LiveFragment extends MySupportFragment<LivePresenter> implements Li
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        initRefreshLayout();
         initHeaderView();
         initCtlCategory();
-        initRecyclerView();
+        initFooterView();
     }
+
 
     @Override
     public void setData(Object data) {
@@ -77,6 +88,11 @@ public class LiveFragment extends MySupportFragment<LivePresenter> implements Li
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         mPresenter.loadData();
+    }
+
+    private void initRefreshLayout() {
+        mRefreshLayout.setColorSchemeColors(ArmsUtils.getColor(_mActivity, R.color.colorPrimary));
+        mRefreshLayout.setOnRefreshListener(() -> mPresenter.loadData());
     }
 
     private void initHeaderView() {
@@ -90,6 +106,7 @@ public class LiveFragment extends MySupportFragment<LivePresenter> implements Li
         ArrayList<CustomTabEntity> tabEntities = new ArrayList<>();
         tabEntities.add(new TabEntity(ArmsUtils.getString(_mActivity, R.string.live_home_follow_anchor), R.mipmap.live_home_follow_anchor, R.mipmap.live_home_follow_anchor));
         tabEntities.add(new TabEntity(ArmsUtils.getString(_mActivity, R.string.live_home_entertainment), R.mipmap.ic_live_home_entertainment, R.mipmap.ic_live_home_entertainment));
+        tabEntities.add(new TabEntity(ArmsUtils.getString(_mActivity, R.string.live_home_game), R.mipmap.ic_live_home_game, R.mipmap.ic_live_home_game));
         tabEntities.add(new TabEntity(ArmsUtils.getString(_mActivity, R.string.live_home_mobile_game), R.mipmap.ic_live_home_mobile_game, R.mipmap.ic_live_home_mobile_game));
         tabEntities.add(new TabEntity(ArmsUtils.getString(_mActivity, R.string.live_home_painting), R.mipmap.ic_live_home_painting, R.mipmap.ic_live_home_painting));
         mCtlCategory.setTabData(tabEntities);
@@ -106,29 +123,19 @@ public class LiveFragment extends MySupportFragment<LivePresenter> implements Li
         });
     }
 
-    private void initRecyclerView() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(_mActivity, 2);
-        mRecyclerView.setLayoutManager(gridLayoutManager);
-    }
-
-    @Override
-    public View getHeaderView() {
-        return mHeaderView;
-    }
-
-    @Override
-    public RecyclerView getRecyclerView() {
-        return mRecyclerView;
+    private void initFooterView() {
+        mFooterView = getLayoutInflater().inflate(R.layout.footer_live_main_home, null, false);
+        mBtnAllLive = mFooterView.findViewById(R.id.btn_all_live);
     }
 
     @Override
     public void showLoading() {
-
+        mRefreshLayout.setRefreshing(true);
     }
 
     @Override
     public void hideLoading() {
-
+        mRefreshLayout.setRefreshing(false);
     }
 
     @Override
@@ -144,5 +151,30 @@ public class LiveFragment extends MySupportFragment<LivePresenter> implements Li
     @Override
     public void killMyself() {
 
+    }
+
+    @Override
+    public void setHeaderView(LiveMultiItemAdapter adapter) {
+        adapter.removeAllHeaderView();
+        adapter.addHeaderView(mHeaderView);
+    }
+
+    @Override
+    public void setBanner(BGABanner.Adapter<ImageView, String> adapter, List<String> banners) {
+        mBanner.setAdapter(adapter);
+        mBanner.setData(banners, banners);
+    }
+
+    @Override
+    public void setRecyclerAdapter(LiveMultiItemAdapter adapter) {
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(_mActivity, 2);
+        mRecyclerView.setLayoutManager(gridLayoutManager);
+        mRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void setFooterView(LiveMultiItemAdapter adapter) {
+        adapter.removeAllFooterView();
+        adapter.addFooterView(mFooterView);
     }
 }
