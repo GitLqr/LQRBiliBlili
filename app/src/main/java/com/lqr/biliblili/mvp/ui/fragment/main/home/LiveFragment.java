@@ -89,12 +89,12 @@ public class LiveFragment extends MySupportFragment<LivePresenter> implements Li
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        mPresenter.loadData();
+        mPresenter.loadData(false);
     }
 
     private void initRefreshLayout() {
         mRefreshLayout.setColorSchemeColors(ArmsUtils.getColor(_mActivity, R.color.colorPrimary));
-        mRefreshLayout.setOnRefreshListener(() -> mPresenter.loadData());
+        mRefreshLayout.setOnRefreshListener(() -> mPresenter.loadData(true));
     }
 
     private void initHeaderView() {
@@ -176,5 +176,12 @@ public class LiveFragment extends MySupportFragment<LivePresenter> implements Li
     @Override
     public void setFooterView(LiveMultiItemAdapter adapter) {
         adapter.addFooterView(mFooterView);
+    }
+
+    @Override
+    public void onDestroy() {
+        // 退出app后必须关闭轮播的自动轮播功能。
+        mBanner.setAutoPlayAble(false);
+        super.onDestroy();
     }
 }

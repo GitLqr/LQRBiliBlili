@@ -31,13 +31,14 @@ import me.jessyan.rxerrorhandler.handler.RetryWithDelay;
 @FragmentScope
 public class LivePresenter extends BasePresenter<LiveContract.Model, LiveContract.View> {
 
-    private List<GetAllListData.BannerBean> mBanner;
+    private List<GetAllListData.DataBean.BannerBean> mBanner;
 
     private RxErrorHandler mErrorHandler;
     private Application mApplication;
     private ImageLoader mImageLoader;
     private AppManager mAppManager;
     private LiveMultiItemAdapter mAdapter;
+    private BGABanner.Adapter<ImageView, String> mBannerAdapter;
 
     @Inject
     public LivePresenter(LiveContract.Model model, LiveContract.View rootView, RxErrorHandler errorHandler, Application application, ImageLoader imageLoader, AppManager appManager) {
@@ -48,8 +49,8 @@ public class LivePresenter extends BasePresenter<LiveContract.Model, LiveContrac
         mAppManager = appManager;
     }
 
-    public void loadData() {
-        mModel.getLiveList()
+    public void loadData(boolean refresh) {
+        mModel.getLiveList(refresh)
                 .retryWhen(new RetryWithDelay(3, 2))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -61,7 +62,7 @@ public class LivePresenter extends BasePresenter<LiveContract.Model, LiveContrac
                 })
                 .observeOn(Schedulers.io())
                 .map(getAllListDataResult -> {
-                    GetAllListData getAllListData = getAllListDataResult.getData();
+                    GetAllListData.DataBean getAllListData = getAllListDataResult.getData();
                     List<LiveMultiItem> data = new ArrayList<>();
                     if (getAllListData != null) {
                         // 轮播
@@ -86,17 +87,12 @@ public class LivePresenter extends BasePresenter<LiveContract.Model, LiveContrac
     }
 
     public void setBanner() {
-        BGABanner.Adapter<ImageView, String> adapter = new BGABanner.Adapter<ImageView, String>() {
-            @Override
-            public void fillBannerItem(BGABanner banner, ImageView itemView, String model, int position) {
-                mImageLoader.loadImage(getContext(),
-                        ImageConfigImpl
-                                .builder()
-                                .url(model)
-                                .imageView(itemView)
-                                .build());
-            }
-        };
+        mBannerAdapter = (banner, itemView, model, position) -> mImageLoader.loadImage(getContext(),
+                ImageConfigImpl
+                        .builder()
+                        .url(model)
+                        .imageView(itemView)
+                        .build());
 
         List<String> banners = new ArrayList<>();
         if (mBanner != null) {
@@ -104,7 +100,7 @@ public class LivePresenter extends BasePresenter<LiveContract.Model, LiveContrac
                 banners.add(mBanner.get(i).getImg());
             }
         }
-        mRootView.setBanner(adapter, banners);
+        mRootView.setBanner(mBannerAdapter, banners);
     }
 
     public void setAdapter(List<LiveMultiItem> data) {
@@ -128,6 +124,7 @@ public class LivePresenter extends BasePresenter<LiveContract.Model, LiveContrac
     @Override
     public void onDestroy() {
         super.onDestroy();
+        this.mBannerAdapter = null;
         this.mErrorHandler = null;
         this.mAppManager = null;
         this.mImageLoader = null;

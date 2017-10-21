@@ -7,8 +7,8 @@ import com.jess.arms.di.scope.FragmentScope;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
 import com.lqr.biliblili.app.data.api.Api;
+import com.lqr.biliblili.app.data.api.cache.LiveCache;
 import com.lqr.biliblili.app.data.api.service.LiveService;
-import com.lqr.biliblili.app.data.entity.Result;
 import com.lqr.biliblili.app.data.entity.live.GetAllListData;
 import com.lqr.biliblili.mvp.contract.LiveContract;
 import com.lqr.biliblili.mvp.ui.adapter.entity.LiveMultiItem;
@@ -19,6 +19,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Function;
+import io.rx_cache2.EvictProvider;
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 
 @FragmentScope
@@ -35,20 +39,29 @@ public class LiveModel extends BaseModel implements LiveContract.Model {
     }
 
     @Override
-    public Observable<Result<GetAllListData>> getLiveList() {
-        // TODO: 2017/10/19 加上数据缓存
-        return mRepositoryManager.obtainRetrofitService(LiveService.class)
-                .getLiveList();
+    public Observable<GetAllListData> getLiveList(boolean update) {
+        return Observable.just(mRepositoryManager
+                .obtainRetrofitService(LiveService.class)
+                .getLiveList())
+                .flatMap(new Function<Observable<GetAllListData>, ObservableSource<GetAllListData>>() {
+                    @Override
+                    public ObservableSource<GetAllListData> apply(@NonNull Observable<GetAllListData> resultObservable) throws Exception {
+                        return mRepositoryManager.obtainCacheService(LiveCache.class)
+                                .getLiveList(resultObservable
+                                        , new EvictProvider(update))
+                                .map(resultReply -> resultReply.getData());
+                    }
+                });
     }
 
     @Override
-    public List<LiveMultiItem> parseRecommendData(GetAllListData getAllListData) {
+    public List<LiveMultiItem> parseRecommendData(GetAllListData.DataBean getAllListData) {
         List<LiveMultiItem> data = new ArrayList<>();
-        GetAllListData.RecommendDataBean recommend_data = getAllListData.getRecommend_data();
+        GetAllListData.DataBean.RecommendDataBean recommend_data = getAllListData.getRecommend_data();
         // 推荐
         if (recommend_data != null) {
             // TITLE
-            GetAllListData.RecommendDataBean.PartitionBean partition = recommend_data.getPartition();
+            GetAllListData.DataBean.RecommendDataBean.PartitionBean partition = recommend_data.getPartition();
             if (partition != null) {
                 LiveMultiItem item = new LiveMultiItem();
                 item.setItemType(LiveMultiItem.TITLE);
@@ -58,9 +71,9 @@ public class LiveModel extends BaseModel implements LiveContract.Model {
                 data.add(item);
             }
             // ITEM
-            List<GetAllListData.RecommendDataBean.LivesBean> lives = recommend_data.getLives();
+            List<GetAllListData.DataBean.RecommendDataBean.LivesBean> lives = recommend_data.getLives();
             if (lives != null) {
-                GetAllListData.RecommendDataBean.LivesBean live;
+                GetAllListData.DataBean.RecommendDataBean.LivesBean live;
                 for (int i = 0; i < 6; i++) {
                     live = lives.get(i);
                     LiveMultiItem item = new LiveMultiItem();
@@ -75,10 +88,10 @@ public class LiveModel extends BaseModel implements LiveContract.Model {
                 }
             }
             // BANNER
-            List<GetAllListData.RecommendDataBean.BannerDataBean> banner_data = recommend_data.getBanner_data();
+            List<GetAllListData.DataBean.RecommendDataBean.BannerDataBean> banner_data = recommend_data.getBanner_data();
             if (banner_data != null) {
                 for (int i = 0; i < banner_data.size(); i++) {
-                    GetAllListData.RecommendDataBean.BannerDataBean bannerDataBean = banner_data.get(i);
+                    GetAllListData.DataBean.RecommendDataBean.BannerDataBean bannerDataBean = banner_data.get(i);
                     LiveMultiItem item = new LiveMultiItem();
                     item.setItemType(LiveMultiItem.BANNER);
                     item.setBannerTitle(bannerDataBean.getTitle());
@@ -88,7 +101,7 @@ public class LiveModel extends BaseModel implements LiveContract.Model {
             }
             // ITEM
             if (lives != null) {
-                GetAllListData.RecommendDataBean.LivesBean live;
+                GetAllListData.DataBean.RecommendDataBean.LivesBean live;
                 for (int i = 6; i < 12; i++) {
                     live = lives.get(i);
                     LiveMultiItem item = new LiveMultiItem();
@@ -111,12 +124,12 @@ public class LiveModel extends BaseModel implements LiveContract.Model {
     }
 
     @Override
-    public List<LiveMultiItem> parsePartitions(GetAllListData getAllListData) {
+    public List<LiveMultiItem> parsePartitions(GetAllListData.DataBean getAllListData) {
         List<LiveMultiItem> data = new ArrayList<>();
-        List<GetAllListData.PartitionsBean> partitions = getAllListData.getPartitions();
+        List<GetAllListData.DataBean.PartitionsBean> partitions = getAllListData.getPartitions();
         if (partitions != null) {
             // 娱乐、游戏、手游、绘画
-            for (GetAllListData.PartitionsBean partitionsBean : partitions) {
+            for (GetAllListData.DataBean.PartitionsBean partitionsBean : partitions) {
                 // TITLE
                 {
                     LiveMultiItem item = new LiveMultiItem();
@@ -127,9 +140,9 @@ public class LiveModel extends BaseModel implements LiveContract.Model {
                     data.add(item);
                 }
                 // ITEM
-                List<GetAllListData.PartitionsBean.LivesBeanX> lives = partitionsBean.getLives();
+                List<GetAllListData.DataBean.PartitionsBean.LivesBeanX> lives = partitionsBean.getLives();
                 if (lives != null) {
-                    GetAllListData.PartitionsBean.LivesBeanX live;
+                    GetAllListData.DataBean.PartitionsBean.LivesBeanX live;
                     for (int i = 0; i < 6; i++) {
                         live = lives.get(i);
                         LiveMultiItem item = new LiveMultiItem();

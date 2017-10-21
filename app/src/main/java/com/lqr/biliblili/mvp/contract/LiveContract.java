@@ -5,7 +5,6 @@ import android.widget.ImageView;
 
 import com.jess.arms.mvp.IModel;
 import com.jess.arms.mvp.IView;
-import com.lqr.biliblili.app.data.entity.Result;
 import com.lqr.biliblili.app.data.entity.live.GetAllListData;
 import com.lqr.biliblili.mvp.ui.adapter.LiveMultiItemAdapter;
 import com.lqr.biliblili.mvp.ui.adapter.entity.LiveMultiItem;
@@ -28,10 +27,10 @@ public interface LiveContract {
     }
 
     interface Model extends IModel {
-        Observable<Result<GetAllListData>> getLiveList();
+        Observable<GetAllListData> getLiveList(boolean update);
 
-        List<LiveMultiItem> parseRecommendData(GetAllListData getAllListData);
+        List<LiveMultiItem> parseRecommendData(GetAllListData.DataBean getAllListData);
 
-        List<LiveMultiItem> parsePartitions(GetAllListData getAllListData);
+        List<LiveMultiItem> parsePartitions(GetAllListData.DataBean getAllListData);
     }
 }
