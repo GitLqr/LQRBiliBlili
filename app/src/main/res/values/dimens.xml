@@ -28,6 +28,9 @@
     <dimen name="item_text_margin_live">14px</dimen>
     <dimen name="banner_text_margin_live">14px</dimen>
 
+    <!--RecommendFragment-->
+    <dimen name="top_text_recommend">26px</dimen>
+
     <!--间距-->
     <dimen name="margin_size_top_1">23px</dimen>
     <dimen name="margin_size_top_2">26px</dimen>

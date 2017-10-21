@@ -42,12 +42,12 @@ public class LiveModel extends BaseModel implements LiveContract.Model {
     public Observable<GetAllListData> getLiveList(boolean update) {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(LiveService.class)
-                .getLiveList())
+                .getLiveIndexList())
                 .flatMap(new Function<Observable<GetAllListData>, ObservableSource<GetAllListData>>() {
                     @Override
                     public ObservableSource<GetAllListData> apply(@NonNull Observable<GetAllListData> resultObservable) throws Exception {
                         return mRepositoryManager.obtainCacheService(LiveCache.class)
-                                .getLiveList(resultObservable
+                                .getLiveIndexList(resultObservable
                                         , new EvictProvider(update))
                                 .map(resultReply -> resultReply.getData());
                     }

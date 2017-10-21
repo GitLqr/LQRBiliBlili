@@ -30,7 +30,6 @@ import butterknife.OnClick;
  */
 public class MainHomeFragment extends MySupportFragment {
 
-
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.tablayout)
@@ -103,6 +102,7 @@ public class MainHomeFragment extends MySupportFragment {
 
     private void initTabLayoutAndViewPager() {
         mViewPager.setAdapter(new MainHomeFragmentAdapter(getChildFragmentManager(), _mActivity));
+        mViewPager.setCurrentItem(1);
         mTabLayout.setViewPager(mViewPager);
     }
 }

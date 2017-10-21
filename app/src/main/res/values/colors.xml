@@ -45,4 +45,9 @@
     <color name="footer_all_live_btn_bg_live">#FAFAFA</color>
     <color name="footer_all_live_btn_stroke_live">#BFBFBF</color>
 
+    <!--CommendFragment-->
+    <color name="top_title_rank_tag_recommend">#F4F4F4</color>
+    <color name="top_left_text_recommend">#FB7299</color>
+    <color name="top_right_text_recommend">#999999</color>
+
 </resources>

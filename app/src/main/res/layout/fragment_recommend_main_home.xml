@@ -1,12 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="推荐"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80px"
+        android:background="@color/top_title_rank_tag_recommend"
+        android:gravity="center_vertical">
 
-</LinearLayout>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_1_left_right"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/recommend_home_comprehensive"
+            android:textColor="@color/top_left_text_recommend"
+            android:textSize="@dimen/top_text_recommend"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_size_1_left_right"
+            android:drawableLeft="@mipmap/ic_rank"
+            android:drawablePadding="5px"
+            android:gravity="center_vertical"
+            android:text="@string/recommend_home_rank_list"
+            android:textColor="@color/top_right_text_recommend"
+            android:textSize="@dimen/top_text_recommend"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_size_1_left_right"
+            android:drawableLeft="@mipmap/tag_center_icon_my_tag"
+            android:drawablePadding="5px"
+            android:gravity="center_vertical"
+            android:text="@string/recommend_home_tag"
+            android:textColor="@color/top_right_text_recommend"
+            android:textSize="@dimen/top_text_recommend"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/nav_bottom_line"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>
