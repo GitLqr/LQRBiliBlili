@@ -13,6 +13,7 @@
         android:layout_marginBottom="6px"
         android:layout_marginTop="16px"
         app:refresh_btn_borderRadius="50px"
+        app:refresh_btn_borderWidth="2px"
         app:refresh_btn_iconSize="32px"
         app:refresh_btn_text="点击换一批"
         app:refresh_btn_textColor="@color/bottom_text_live"
