@@ -45,6 +45,15 @@
     <color name="footer_all_live_btn_bg_live">#FAFAFA</color>
     <color name="footer_all_live_btn_stroke_live">#BFBFBF</color>
 
+    <!--RecommendFragment-->
+    <color name="item_title_text_recommend">#333333</color>
+    <color name="item_item_dest_text_recommend">#AAAAAA</color>
+    <color name="item_streamer_badge_text_recommend">#fb7299</color>
+    <color name="item_item_yellow_tag_text_recommend">#FB9E60</color>
+    <color name="item_item_gray_tag_text_recommend">#CCCCCC</color>
+    <color name="item_item_av_info_text_recommend">#FFFFFF</color>
+    <color name="item_item_ad_info_text_recommend">#FFFFFF</color>
+
     <!--CommendFragment-->
     <color name="top_title_rank_tag_recommend">#F4F4F4</color>
     <color name="top_left_text_recommend">#FB7299</color>

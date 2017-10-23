@@ -31,14 +31,7 @@ public class LiveMultiItem implements MultiItemEntity {
 
     // BOTTOM
     //
-
-    @Override
-    public int getItemType() {
-        return itemType;
-    }
-
-    public void setItemType(int itemType) {
-        this.itemType = itemType;
+    private void setSpanSzieWithItemType(int itemType) {
         switch (itemType) {
             case TITLE:
                 spanSize = 2;
@@ -54,6 +47,17 @@ public class LiveMultiItem implements MultiItemEntity {
                 break;
         }
     }
+
+    @Override
+    public int getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(int itemType) {
+        this.itemType = itemType;
+        setSpanSzieWithItemType(itemType);
+    }
+
 
     public int getSpanSize() {
         return spanSize;

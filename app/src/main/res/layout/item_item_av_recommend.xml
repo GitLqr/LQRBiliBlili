@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fl_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.lqr.biliblili.mvp.ui.widget.AutoCardView
+        android:layout_width="match_parent"
+        android:layout_height="370px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="12px"
+        android:layout_marginLeft="14px"
+        android:layout_marginRight="14px"
+        android:layout_marginTop="14px"
+        app:cardCornerRadius="@dimen/card_view_radius_recommend"
+        app:cardElevation="@dimen/card_view_elevation_recommend">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200px">
+
+                <ImageView
+                    android:id="@+id/iv_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_play"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/item_text_margin_recommend"
+                        android:layout_marginLeft="@dimen/item_text_margin_recommend"
+                        android:drawableLeft="@mipmap/ic_upper_info_views"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:text="12.1"
+                        android:textColor="@color/item_item_av_info_text_recommend"
+                        android:textSize="23px"/>
+
+                    <TextView
+                        android:id="@+id/tv_danmaku"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/item_text_margin_recommend"
+                        android:layout_marginLeft="10px"
+                        android:layout_marginRight="@dimen/item_text_margin_recommend"
+                        android:layout_weight="1"
+                        android:drawableLeft="@mipmap/ic_upper_info_danmakus"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/item_item_av_info_text_recommend"
+                        android:textSize="22px"/>
+
+                    <TextView
+                        android:id="@+id/tv_duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/item_text_margin_recommend"
+                        android:layout_marginLeft="10px"
+                        android:layout_marginRight="@dimen/item_text_margin_recommend"
+                        android:gravity="center_vertical"
+                        android:text="19:11"
+                        android:textColor="@color/item_item_av_info_text_recommend"
+                        android:textSize="22px"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/item_text_margin_recommend"
+                android:layout_marginRight="@dimen/item_text_margin_recommend"
+                android:layout_marginTop="@dimen/item_text_margin_recommend"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:textColor="@color/item_title_text_recommend"
+                android:textSize="26px"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/item_text_margin_recommend"
+                android:layout_marginLeft="@dimen/item_text_margin_recommend"
+                android:layout_marginRight="@dimen/item_text_margin_recommend"
+                android:layout_marginTop="@dimen/item_text_margin_recommend"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_tname_tag_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:textColor="@color/item_item_dest_text_recommend"
+                    android:textSize="23px"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10px"
+                    android:src="@mipmap/ic_video_more"/>
+            </LinearLayout>
+        </LinearLayout>
+    </com.lqr.biliblili.mvp.ui.widget.AutoCardView>
+</com.zhy.autolayout.AutoFrameLayout>

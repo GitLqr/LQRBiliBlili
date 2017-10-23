@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.lqr.biliblili.mvp.ui.widget.AutoCardView
+        android:layout_width="match_parent"
+        android:layout_height="216px"
+        android:layout_marginLeft="@dimen/margin_size_1_left_right"
+        android:layout_marginRight="@dimen/margin_size_1_left_right"
+        android:layout_marginTop="@dimen/margin_size_top_1"
+        app:cardCornerRadius="@dimen/card_view_radius_recommend"
+        app:cardElevation="@dimen/card_view_elevation_recommend">
+
+        <cn.bingoogolapple.bgabanner.BGABanner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:banner_indicatorGravity="right"
+            app:banner_pageChangeDuration="1000"
+            app:banner_pointAutoPlayAble="true"
+            app:banner_pointAutoPlayInterval="3000"
+            app:banner_pointContainerBackground="@android:color/transparent"
+            app:banner_pointDrawable="@drawable/selector_live_header_banner_point_solid"
+            app:banner_pointTopBottomMargin="2dp"
+            app:banner_tipTextSize="0dp"
+            app:banner_transitionEffect="alpha"/>
+    </com.lqr.biliblili.mvp.ui.widget.AutoCardView>
+</com.zhy.autolayout.AutoFrameLayout>

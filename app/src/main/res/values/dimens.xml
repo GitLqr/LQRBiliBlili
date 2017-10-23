@@ -29,7 +29,13 @@
     <dimen name="banner_text_margin_live">14px</dimen>
 
     <!--RecommendFragment-->
+    <dimen name="card_view_radius_recommend">8px</dimen>
     <dimen name="top_text_recommend">26px</dimen>
+    <dimen name="card_view_elevation_recommend">2px</dimen>
+    <dimen name="item_text_margin_recommend">14px</dimen>
+    <dimen name="item_title_recommend">26px</dimen>
+    <dimen name="item_desc_recommend">23px</dimen>
+    <dimen name="item_badge_recommend">20px</dimen>
 
     <!--间距-->
     <dimen name="margin_size_top_1">23px</dimen>

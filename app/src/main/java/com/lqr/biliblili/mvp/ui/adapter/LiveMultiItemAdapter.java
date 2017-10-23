@@ -7,6 +7,8 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
 import com.jess.arms.utils.ArmsUtils;
 import com.lqr.biliblili.R;
+import com.lqr.biliblili.app.utils.ConstantUtil;
+import com.lqr.biliblili.app.utils.TextHandleUtil;
 import com.lqr.biliblili.mvp.ui.adapter.entity.LiveMultiItem;
 
 import java.util.List;
@@ -48,13 +50,13 @@ public class LiveMultiItemAdapter extends BaseMultiItemQuickAdapter<LiveMultiIte
                                 .imageView(helper.getView(R.id.iv_item_cover_src))
                                 .url(item.getItemCoverSrc())
                                 .build());
-                int leftPadding = item.isOdd() ? ArmsUtils.dip2px(mContext, 8) : 0;
-                int rightPadding = item.isOdd() ? 0 : ArmsUtils.dip2px(mContext, 8);
+                int leftPadding = item.isOdd() ? ArmsUtils.dip2px(mContext, ConstantUtil.MAIN_HOME_ITEM_PADDING) : 0;
+                int rightPadding = item.isOdd() ? 0 : ArmsUtils.dip2px(mContext, ConstantUtil.MAIN_HOME_ITEM_PADDING);
                 helper.getView(R.id.fl_item).setPadding(leftPadding, 0, rightPadding, 0);
                 helper.setText(R.id.tv_item_owner_name, item.getItemOwnerName())
                         .setText(R.id.tv_item_title, item.getItemTitle())
                         .setText(R.id.tv_item_sub_title, item.getItemSubTitle())
-                        .setText(R.id.tv_item_online, item.getItemOnline() + "");
+                        .setText(R.id.tv_item_online, TextHandleUtil.handleCount2TenThousand(item.getItemOnline()));
                 break;
             case LiveMultiItem.BANNER:
                 mAppComponent

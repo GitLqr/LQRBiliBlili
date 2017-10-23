@@ -49,6 +49,7 @@
     <string name="recommend_home_comprehensive">综合</string>
     <string name="recommend_home_rank_list">排行榜</string>
     <string name="recommend_home_tag">标签</string>
+    <string name="recommend_home_update_to_last_index">更新至第$1%d话</string>
 
     <string name="login">登录</string>
     <string name="tip_no_login_dynamic">你还没有登录哦~\n赶快登录打开新世界的大门</string>

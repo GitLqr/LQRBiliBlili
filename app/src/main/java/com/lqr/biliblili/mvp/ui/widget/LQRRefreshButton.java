@@ -13,6 +13,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
@@ -25,7 +26,7 @@ import com.lqr.biliblili.R;
 public class LQRRefreshButton extends View {
 
     private int borderColor = Color.parseColor("#fb7299");
-    private float borderWidth = 2;
+    private float borderWidth = 0;
     private float borderRadius = 120;
 
     private String text = "";
@@ -55,16 +56,16 @@ public class LQRRefreshButton extends View {
         // 获取自定义属性值
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.LQRRefreshButton);
         borderColor = ta.getColor(R.styleable.LQRRefreshButton_refresh_btn_borderColor, Color.parseColor("#fb7299"));
-        borderWidth = ta.getDimension(R.styleable.LQRRefreshButton_refresh_btn_borderWidth, 2);
-        borderRadius = ta.getDimension(R.styleable.LQRRefreshButton_refresh_btn_borderRadius, 120);
+        borderWidth = ta.getDimension(R.styleable.LQRRefreshButton_refresh_btn_borderWidth, dipToPx(0));
+        borderRadius = ta.getDimension(R.styleable.LQRRefreshButton_refresh_btn_borderRadius, dipToPx(60));
         text = ta.getString(R.styleable.LQRRefreshButton_refresh_btn_text);
         if (text == null)
             text = "";
         textColor = ta.getColor(R.styleable.LQRRefreshButton_refresh_btn_textColor, Color.parseColor("#fb7299"));
-        textSize = ta.getDimension(R.styleable.LQRRefreshButton_refresh_btn_textSize, 28);
+        textSize = ta.getDimension(R.styleable.LQRRefreshButton_refresh_btn_textSize, spToPx(14));
         iconSrc = ta.getResourceId(R.styleable.LQRRefreshButton_refresh_btn_iconSrc, R.mipmap.tag_center_refresh_icon);
-        iconSize = ta.getDimension(R.styleable.LQRRefreshButton_refresh_btn_iconSize, 28);
-        space4TextAndIcon = ta.getDimension(R.styleable.LQRRefreshButton_refresh_btn_space4TextAndIcon, 20);
+        iconSize = ta.getDimension(R.styleable.LQRRefreshButton_refresh_btn_iconSize, dipToPx(14));
+        space4TextAndIcon = ta.getDimension(R.styleable.LQRRefreshButton_refresh_btn_space4TextAndIcon, dipToPx(10));
 
         // icon
         iconBitmap = BitmapFactory.decodeResource(getResources(), iconSrc);
@@ -82,10 +83,12 @@ public class LQRRefreshButton extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         // 1、画圆角矩形
-        mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setColor(borderColor);
-        mPaint.setStrokeWidth(borderWidth);
-        canvas.drawRoundRect(new RectF(0, 0, getWidth(), getHeight()), borderRadius, borderRadius, mPaint);
+        if (borderWidth > 0) {
+            mPaint.setStyle(Paint.Style.STROKE);
+            mPaint.setColor(borderColor);
+            mPaint.setStrokeWidth(borderWidth);
+            canvas.drawRoundRect(new RectF(0, 0, getWidth(), getHeight()), borderRadius, borderRadius, mPaint);
+        }
 
         // 2、画字
         mPaint.setTextSize(textSize);
@@ -137,5 +140,13 @@ public class LQRRefreshButton extends View {
         // 得到新的图片
         Bitmap newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true);
         return newbm;
+    }
+
+    public float dipToPx(float dip) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, getResources().getDisplayMetrics());
+    }
+
+    public float spToPx(float sp) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, getResources().getDisplayMetrics());
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.lqr.biliblili.di.component.DaggerRecommendComponent;
 import com.lqr.biliblili.di.module.RecommendModule;
 import com.lqr.biliblili.mvp.contract.RecommendContract;
 import com.lqr.biliblili.mvp.presenter.RecommendPresenter;
+import com.lqr.biliblili.mvp.ui.adapter.RecommendMultiItemAdapter;
 
 import butterknife.BindView;
 
@@ -67,7 +69,7 @@ public class RecommendFragment extends MySupportFragment<RecommendPresenter> imp
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        mPresenter.loadData(false);
+        mPresenter.loadData(0, false, true);
     }
 
     @Override
@@ -97,6 +99,28 @@ public class RecommendFragment extends MySupportFragment<RecommendPresenter> imp
 
     private void initRefreshLayout() {
         mRefreshLayout.setColorSchemeColors(ArmsUtils.getColor(_mActivity, R.color.colorPrimary));
-        mRefreshLayout.setOnRefreshListener(() -> mPresenter.loadData(true));
+        mRefreshLayout.setOnRefreshListener(() -> mPresenter.loadData(mPresenter.getIdx(true), true, false));
+    }
+
+    @Override
+    public void setRecyclerAdapter(RecommendMultiItemAdapter adapter) {
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(_mActivity, 2);
+        mRecyclerView.setLayoutManager(gridLayoutManager);
+        mRecyclerView.setAdapter(adapter);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                // 上拉加载更多视图
+                if (position == adapter.getData().size()) {
+                    return 2;
+                }
+                return adapter.getData().get(position).getSpanSize();
+            }
+        });
+    }
+
+    @Override
+    public void recyclerScrollToPosition(int position) {
+        mRecyclerView.scrollToPosition(position);
     }
 }
