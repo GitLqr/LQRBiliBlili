@@ -67,6 +67,8 @@ public class LQRRefreshButton extends View {
         iconSize = ta.getDimension(R.styleable.LQRRefreshButton_refresh_btn_iconSize, dipToPx(14));
         space4TextAndIcon = ta.getDimension(R.styleable.LQRRefreshButton_refresh_btn_space4TextAndIcon, dipToPx(10));
 
+        ta.recycle();
+
         // icon
         iconBitmap = BitmapFactory.decodeResource(getResources(), iconSrc);
         iconBitmap = zoomImg(iconBitmap, iconSize, iconSize);
@@ -115,7 +117,8 @@ public class LQRRefreshButton extends View {
     }
 
     public void stop() {
-        mAnimator.start();
+        mAnimator.cancel();
+        setDegress(0);
     }
 
     public float getDegress() {

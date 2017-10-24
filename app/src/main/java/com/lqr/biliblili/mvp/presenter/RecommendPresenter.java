@@ -46,7 +46,7 @@ public class RecommendPresenter extends BasePresenter<RecommendContract.Model, R
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(disposable -> {
-                    if (refresh) mRootView.showLoading();
+                    if (refresh || clearCache) mRootView.showLoading();
                 })
                 .doFinally(() -> mRootView.hideLoading())
                 .observeOn(Schedulers.io())
