@@ -29,5 +29,6 @@ iOS项目仓库 [LXFBiliBili](https://github.com/LinXunFeng/LXFBiliBili)
 
 ### Android
 
-[项目实战-仿bilibili刷新按钮的实现](https://juejin.im/post/59eec9656fb9a045204b6717)
-[项目实战 - 使用Fiddler抓取bilibili安卓客户端口数据并分析（http、https）](https://juejin.im/post/59ef00b6f265da432b4a02ca)
+
+1. [项目实战-仿bilibili刷新按钮的实现](https://juejin.im/post/59eec9656fb9a045204b6717)
+2. [项目实战 - 使用Fiddler抓取bilibili安卓客户端口数据并分析（http、https）](https://juejin.im/post/59ef00b6f265da432b4a02ca)
