@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.jess.arms.widget.autolayout.AutoAppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.jess.arms.widget.autolayout.AutoCollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="376px"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleTextAppearance="@style/CollapsingToolbarTitleStyle.About"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:statusBarScrim="?attr/colorAccent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/img_video_pic"/>
+
+            <com.jess.arms.widget.autolayout.AutoToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <TextView
+                    android:id="@+id/tv_av"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="32px"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/tv_play_immediately"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_fab_play"
+                    android:drawablePadding="6px"
+                    android:gravity="center"
+                    android:text="@string/play_immediately"
+                    android:textColor="@color/white"
+                    android:textSize="36px"
+                    android:visibility="gone"/>
+            </com.jess.arms.widget.autolayout.AutoToolbar>
+        </com.jess.arms.widget.autolayout.AutoCollapsingToolbarLayout>
+
+        <com.lqr.biliblili.mvp.ui.widget.AutoSlidingTabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="82px"
+            android:background="#fff"
+            app:tl_indicator_margin_left="25px"
+            app:tl_indicator_margin_right="25px"
+            app:tl_tab_space_equal="true"/>
+    </com.jess.arms.widget.autolayout.AutoAppBarLayout>
+
+    <!--
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    -->
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@mipmap/ic_launcher"/>
+
+            <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:src="@mipmap/ic_launcher"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30px"
+        android:src="@mipmap/ic_fab_play"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_anchor="@id/collapsing_toolbar_layout"
+        app:layout_anchorGravity="bottom|right|end"
+        app:rippleColor="@color/colorPrimaryDark"/>
+</android.support.design.widget.CoordinatorLayout>

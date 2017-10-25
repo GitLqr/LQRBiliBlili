@@ -13,10 +13,36 @@
     <application
         android:name="com.jess.arms.base.BaseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".mvp.ui.activity.MainActivity">
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.SplashActivity">
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.SettingActivity">
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.ThemeActivity">
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.WebActivity">
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.CustomerViewActivity">
+        </activity>
+        <activity
+            android:name=".mvp.ui.activity.VideoDetailActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
         <meta-data
             android:name="design_width"
             android:value="720"/>
@@ -28,36 +54,6 @@
         <meta-data
             android:name="com.lqr.biliblili.app.GlobalConfiguration"
             android:value="ConfigModule"/>
-
-        <activity
-            android:name=".mvp.ui.activity.MainActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".mvp.ui.activity.SplashActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".mvp.ui.activity.SettingActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".mvp.ui.activity.ThemeActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".mvp.ui.activity.WebActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".mvp.ui.activity.CustomerViewActivity"
-            android:screenOrientation="portrait">
-        </activity>
     </application>
 
 </manifest>

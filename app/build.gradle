@@ -68,9 +68,10 @@ dependencies {
     compile(rootProject.ext.dependencies["retrofit-url-manager"])
     compile(rootProject.ext.dependencies["fragmentation"])
     compile(rootProject.ext.dependencies["fragmentation-core"])
-    compile(rootProject.ext.dependencies["statusbarutil"])
     compile(rootProject.ext.dependencies["agentweb"])
     compile(rootProject.ext.dependencies["brvah"])
+    compile(rootProject.ext.dependencies["FlycoSystemBar_Lib"])
+    compile(rootProject.ext.dependencies["uiadapter"])
 
     // test
     testCompile rootProject.ext.dependencies["junit"]

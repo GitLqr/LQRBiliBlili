@@ -6,20 +6,14 @@
               android:layout_gravity="start"
               android:orientation="vertical">
 
-    <FrameLayout
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <android.support.design.widget.NavigationView
-            android:id="@+id/nav"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fadingEdge="none"
-            app:headerLayout="@layout/nav_header"
-            app:itemBackground="@color/nav_menu_bg"
-            app:menu="@menu/nav_menu"/>
-    </FrameLayout>
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        app:headerLayout="@layout/nav_header"
+        app:itemBackground="@color/nav_menu_bg"
+        app:menu="@menu/nav_menu"/>
 
     <View
         android:layout_width="match_parent"

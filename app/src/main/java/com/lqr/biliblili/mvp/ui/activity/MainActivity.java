@@ -1,7 +1,6 @@
 package com.lqr.biliblili.mvp.ui.activity;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuView;
@@ -13,10 +12,9 @@ import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.jaeger.library.StatusBarUtil;
+import com.flyco.systembar.SystemBarHelper;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-import com.jess.arms.utils.DeviceUtils;
 import com.lqr.biliblili.R;
 import com.lqr.biliblili.app.base.MySupportActivity;
 import com.lqr.biliblili.app.tag.MainTag;
@@ -95,8 +93,8 @@ public class MainActivity extends MySupportActivity<MainPresenter> implements Ma
     @Override
     public void initData(Bundle savedInstanceState) {
         initFragmentation();
-        initStatusBar();
         initNavigationView();
+        initStatusBar();
     }
 
 
@@ -135,15 +133,18 @@ public class MainActivity extends MySupportActivity<MainPresenter> implements Ma
     }
 
     private void initStatusBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-                StatusBarUtil.setTranslucentForDrawerLayout(this, mDrawer, 40);
-            } else {
-                StatusBarUtil.setColorNoTranslucent(this, ArmsUtils.getColor(this, R.color.colorPrimary));
-            }
-            mLlRoot.setPadding(0, DeviceUtils.getStatuBarHeight(this), 0, 0);
-            mNav.getHeaderView(0).setPadding(0, DeviceUtils.getStatuBarHeight(this), 0, 0);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+//                StatusBarUtil.setTranslucentForDrawerLayout(this, mDrawer, 40);
+//            } else {
+//                StatusBarUtil.setColorNoTranslucent(this, ArmsUtils.getColor(this, R.color.colorPrimary));
+//            }
+//            mLlRoot.setPadding(0, DeviceUtils.getStatuBarHeight(this), 0, 0);
+//            mNav.getHeaderView(0).setPadding(0, DeviceUtils.getStatuBarHeight(this), 0, 0);
+//        }
+
+        SystemBarHelper.tintStatusBarForDrawer(this, mDrawer, ArmsUtils.getColor(this, R.color.colorPrimary));
+        SystemBarHelper.setPadding(this, mNav.getHeaderView(0));
     }
 
     private void initNavigationView() {
