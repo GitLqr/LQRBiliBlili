@@ -133,18 +133,9 @@ public class MainActivity extends MySupportActivity<MainPresenter> implements Ma
     }
 
     private void initStatusBar() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-//                StatusBarUtil.setTranslucentForDrawerLayout(this, mDrawer, 40);
-//            } else {
-//                StatusBarUtil.setColorNoTranslucent(this, ArmsUtils.getColor(this, R.color.colorPrimary));
-//            }
-//            mLlRoot.setPadding(0, DeviceUtils.getStatuBarHeight(this), 0, 0);
-//            mNav.getHeaderView(0).setPadding(0, DeviceUtils.getStatuBarHeight(this), 0, 0);
-//        }
-
         SystemBarHelper.tintStatusBarForDrawer(this, mDrawer, ArmsUtils.getColor(this, R.color.colorPrimary));
         SystemBarHelper.setPadding(this, mNav.getHeaderView(0));
+        SystemBarHelper.setPadding(this, mLlRoot);
     }
 
     private void initNavigationView() {
