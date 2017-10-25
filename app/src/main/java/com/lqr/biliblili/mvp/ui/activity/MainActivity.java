@@ -92,9 +92,9 @@ public class MainActivity extends MySupportActivity<MainPresenter> implements Ma
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        initStatusBar();
         initFragmentation();
         initNavigationView();
-        initStatusBar();
     }
 
 

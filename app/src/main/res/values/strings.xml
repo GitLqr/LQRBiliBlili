@@ -53,7 +53,9 @@
     <string name="recommend_home_update_to_last_index">更新至第$1%d话</string>
 
     <!--VideoDetailActivity-->
-    <string name="play_immediately">立刻播放</string>
+    <string name="v_detail_play_immediately">立刻播放</string>
+    <string name="v_detail_summary">简介</string>
+    <string name="v_detail_evaluate">评论($1%d)</string>
 
     <string name="login">登录</string>
     <string name="tip_no_login_dynamic">你还没有登录哦~\n赶快登录打开新世界的大门</string>
