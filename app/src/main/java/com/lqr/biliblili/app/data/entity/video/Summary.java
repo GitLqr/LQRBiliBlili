@@ -1,5 +1,7 @@
 package com.lqr.biliblili.app.data.entity.video;
 
+import android.support.annotation.NonNull;
+
 import java.util.List;
 
 /**
@@ -1475,7 +1477,7 @@ public class Summary {
             }
         }
 
-        public static class TagBean {
+        public static class TagBean implements Comparable<TagBean>{
             /**
              * attribute : 0
              * cover : http://static.hdslb.com/images/transparent.gif
@@ -1558,6 +1560,12 @@ public class Summary {
 
             public void setTag_name(String tag_name) {
                 this.tag_name = tag_name;
+            }
+
+
+            @Override
+            public int compareTo(@NonNull TagBean o) {
+                return this.tag_name.length()-o.getTag_name().length();
             }
         }
     }

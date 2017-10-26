@@ -1,19 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoLinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="200px"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
     android:orientation="horizontal">
 
-    <ImageView
-        android:layout_width="300px"
-        android:layout_height="match_parent"/>
+    <com.lqr.biliblili.mvp.ui.widget.AutoCardView
+        android:layout_width="wrap_content"
+        android:layout_height="182px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8px"
+        android:layout_marginLeft="@dimen/margin_size_1_left_right"
+        android:layout_marginTop="8px"
+        app:cardCornerRadius="@dimen/card_view_radius_live"
+        app:cardElevation="@dimen/card_view_elevation_live">
+
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="300px"
+            android:layout_height="match_parent"/>
+    </com.lqr.biliblili.mvp.ui.widget.AutoCardView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="182px"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="@dimen/margin_size_1_left_right"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textColor="@color/text_title"
+            android:textSize="28px"/>
+
+        <TextView
+            android:id="@+id/tv_owner_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:drawableLeft="@mipmap/music_icon_up"
+            android:drawablePadding="@dimen/tv_drawable_padding"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textColor="@color/text_desc"
+            android:textSize="@dimen/video_state_text_up"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="10px"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/icon_video_play_num"
+                android:drawablePadding="@dimen/tv_drawable_padding"
+                android:gravity="center_vertical"
+                android:text="11万"
+                android:textColor="@color/text_desc"
+                android:textSize="@dimen/video_state_text_up"/>
+
+            <TextView
+                android:id="@+id/tv_danmaku"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_size_1_left_right"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/ic_danmu"
+                android:drawablePadding="@dimen/tv_drawable_padding"
+                android:gravity="center_vertical"
+                android:text="561"
+                android:textColor="@color/text_desc"
+                android:textSize="@dimen/video_state_text_up"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10px"
+                android:src="@mipmap/ic_video_more"/>
+        </LinearLayout>
     </LinearLayout>
 
 

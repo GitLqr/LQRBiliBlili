@@ -38,7 +38,8 @@
     <dimen name="item_badge_recommend">20px</dimen>
 
     <!--VideoDetailActivity-->
-    <dimen name="video_state_text">24px</dimen>
+    <dimen name="video_state_text_up">22px</dimen>
+    <dimen name="video_state_text_down">20px</dimen>
 
     <!--间距-->
     <dimen name="margin_size_top_1">23px</dimen>

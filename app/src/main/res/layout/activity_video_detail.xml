@@ -55,7 +55,7 @@
                     android:gravity="center"
                     android:text="@string/v_detail_play_immediately"
                     android:textColor="@color/white"
-                    android:textSize="36px"
+                    android:textSize="30px"
                     android:visibility="gone"/>
             </com.jess.arms.widget.autolayout.AutoToolbar>
         </com.jess.arms.widget.autolayout.AutoCollapsingToolbarLayout>
@@ -65,12 +65,12 @@
             android:layout_width="match_parent"
             android:layout_height="82px"
             android:background="#fff"
-            app:tl_indicator_margin_left="25px"
             app:tl_indicator_color="@color/colorPrimary"
-            app:tl_indicator_height="2px"
-            app:tl_indicator_margin_right="25px"
+            app:tl_indicator_height="3px"
+            app:tl_indicator_width_equal_title="true"
             app:tl_textSelectColor="@color/colorPrimary"
-            app:tl_textUnselectColor="#000"/>
+            app:tl_textUnselectColor="#000"
+            app:tl_textsize="26px"/>
     </com.jess.arms.widget.autolayout.AutoAppBarLayout>
 
     <android.support.v4.view.ViewPager
@@ -83,7 +83,7 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="30px"
+        android:layout_marginRight="10px"
         android:src="@mipmap/ic_fab_play"
         app:backgroundTint="@color/colorPrimary"
         app:layout_anchor="@id/collapsing_toolbar_layout"

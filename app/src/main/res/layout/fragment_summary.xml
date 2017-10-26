@@ -13,17 +13,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5px"
+            android:layout_marginTop="2px"
             android:background="@color/main_bg"
             android:orientation="vertical"
             android:paddingLeft="@dimen/margin_size_1_left_right"
-            android:paddingRight="@dimen/margin_size_1_left_right"
-            android:paddingTop="@dimen/margin_size_1_left_right">
+            android:paddingRight="@dimen/margin_size_1_left_right">
 
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="34px"
                 android:textColor="@color/text_title"
                 android:textSize="28px"/>
 
@@ -42,7 +42,7 @@
                     android:gravity="center_vertical"
                     android:text="11万"
                     android:textColor="@color/text_desc"
-                    android:textSize="@dimen/video_state_text"/>
+                    android:textSize="@dimen/video_state_text_up"/>
 
                 <TextView
                     android:id="@+id/tv_danmaku"
@@ -55,7 +55,7 @@
                     android:gravity="center_vertical"
                     android:text="561"
                     android:textColor="@color/text_desc"
-                    android:textSize="@dimen/video_state_text"/>
+                    android:textSize="@dimen/video_state_text_up"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -65,22 +65,24 @@
                     android:gravity="center_vertical"
                     android:text="未经作者授权禁止转载"
                     android:textColor="@color/text_statement"
-                    android:textSize="@dimen/video_state_text"/>
+                    android:textSize="@dimen/video_state_text_up"/>
             </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10px">
+                android:layout_marginTop="15px">
 
                 <TextView
                     android:id="@+id/tv_desc"
                     android:layout_width="600px"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
                     android:textColor="@color/text_desc"
-                    android:textSize="@dimen/video_state_text"/>
+                    android:textSize="@dimen/video_state_text_up"/>
 
                 <ImageView
+                    android:id="@+id/iv_desc_shrink"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@id/tv_desc"
@@ -93,7 +95,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_marginBottom="12px"
+                android:layout_marginBottom="14px"
                 android:layout_marginTop="@dimen/margin_size_1_left_right"
                 android:background="@color/nav_bottom_line"/>
 
@@ -101,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="12px">
+                android:paddingBottom="14px">
 
                 <RelativeLayout
                     android:layout_width="0dp"
@@ -118,7 +120,7 @@
                         android:gravity="center_vertical"
                         android:text="266"
                         android:textColor="#46C235"
-                        android:textSize="@dimen/video_state_text"/>
+                        android:textSize="@dimen/video_state_text_down"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -136,7 +138,7 @@
                         android:gravity="center_vertical"
                         android:text="1978"
                         android:textColor="#FFA726"
-                        android:textSize="@dimen/video_state_text"/>
+                        android:textSize="@dimen/video_state_text_down"/>
 
                 </RelativeLayout>
 
@@ -155,7 +157,7 @@
                         android:gravity="center_vertical"
                         android:text="854"
                         android:textColor="#FF84A7"
-                        android:textSize="@dimen/video_state_text"/>
+                        android:textSize="@dimen/video_state_text_down"/>
 
                 </RelativeLayout>
 
@@ -174,7 +176,7 @@
                         android:gravity="center_vertical"
                         android:text="缓存"
                         android:textColor="#3CA6FF"
-                        android:textSize="@dimen/video_state_text"/>
+                        android:textSize="@dimen/video_state_text_down"/>
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
@@ -182,10 +184,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15px"
+            android:layout_marginTop="12px"
             android:background="@color/main_bg"
             android:orientation="vertical"
-            android:padding="@dimen/margin_size_1_left_right">
+            android:paddingBottom="10px"
+            android:paddingLeft="@dimen/margin_size_1_left_right"
+            android:paddingRight="@dimen/margin_size_1_left_right"
+            android:paddingTop="@dimen/margin_size_1_left_right"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -196,13 +202,13 @@
 
                 <ImageView
                     android:id="@+id/iv_header"
-                    android:layout_width="70px"
-                    android:layout_height="70px"
+                    android:layout_width="75px"
+                    android:layout_height="75px"
                     android:src="@mipmap/bili_default_avatar"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="70px"
+                    android:layout_height="75px"
                     android:layout_marginLeft="@dimen/margin_size_1_left_right"
                     android:layout_weight="1"
                     android:orientation="vertical">
@@ -211,11 +217,12 @@
                         android:id="@+id/tv_upper_name"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
+                        android:layout_marginTop="2px"
                         android:layout_weight="1"
                         android:gravity="top"
                         android:text="卡卡Master、"
                         android:textColor="@color/text_title"
-                        android:textSize="24px"/>
+                        android:textSize="25px"/>
 
 
                     <TextView
@@ -226,7 +233,7 @@
                         android:gravity="bottom"
                         android:text="11万人关注"
                         android:textColor="@color/text_desc"
-                        android:textSize="20px"/>
+                        android:textSize="22px"/>
                 </LinearLayout>
 
                 <TextView
@@ -249,56 +256,79 @@
                     android:textSize="24px"/>
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="24px"
+                android:layout_marginTop="12px"
+                android:background="@color/nav_bottom_line"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_size_1_left_right"
                     android:layout_weight="1"
                     android:text="视频相关标签"
                     android:textColor="@color/text_title"
-                    android:textSize="30px"/>
+                    android:textSize="28px"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_size_1_left_right"
                     android:text="编辑"
                     android:textColor="@color/text_desc"
                     android:textSize="24px"/>
             </LinearLayout>
 
-            <com.zhy.view.flowlayout.TagFlowLayout
-                android:id="@+id/tag_flow"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_size_1_left_right"/>
+                android:layout_marginTop="20px">
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/tag_flow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/iv_tag_shrink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/tag_flow"
+                    android:layout_alignEnd="@id/tag_flow"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="bottom"
+                    android:src="@mipmap/ic_video_detail_arrow_down"/>
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15px"
+            android:layout_marginTop="12px"
             android:background="@color/main_bg"
-            android:orientation="vertical"
-            android:padding="@dimen/margin_size_1_left_right">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_size_1_left_right"
+                android:layout_marginRight="@dimen/margin_size_1_left_right"
                 android:layout_marginTop="@dimen/margin_size_1_left_right"
                 android:text="视频相关"
                 android:textColor="@color/text_title"
-                android:textSize="30px"/>
+                android:textSize="28px"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_relates"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"/>
         </LinearLayout>
     </com.zhy.autolayout.AutoLinearLayout>
 </android.support.v4.widget.NestedScrollView>

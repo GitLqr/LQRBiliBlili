@@ -15,7 +15,7 @@ public interface VideoDetailService {
 
     // 简介
     @Headers({"Domain-Name: video_detail_summary"})
-    @GET("/x/v2/view?aid=15604756&appkey=1d8b6e7d45233436&build=515000&from=7&mobi_app=android&plat=0&platform=android&ts=1508893149&sign=7694dea72964a471993829a4e8d9b4fc")
+    @GET("/x/v2/view?aid=15583834&appkey=1d8b6e7d45233436&build=515000&from=7&mobi_app=android&plat=0&platform=android&ts=1509012626&sign=431500b493715a6274735a36fcfd848c")
     Observable<Summary> getSummaryData();
 
     // 评论

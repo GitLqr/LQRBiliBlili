@@ -7,7 +7,7 @@
     <color name="white">#FFFFFF</color>
 
     <color name="main_bg">#FFFFFF</color>
-    <color name="fragment_bg">#EAEAEA</color>
+    <color name="fragment_bg">#F4F4F4</color>
 
     <!--MainActivity:侧边栏-->
     <color name="nav_header_text">#FFFFFF</color>

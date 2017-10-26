@@ -29,7 +29,7 @@ public class MyTagAdapter extends TagAdapter<Summary.DataBean.TagBean> {
         int paddingLeftAndRight = 25;
         tv.setPadding(paddingLeftAndRight, paddingTopAndBottom, paddingLeftAndRight, paddingTopAndBottom);
         tv.setText(tagBean.getTag_name());
-        tv.setTextSize(14);
+        tv.setTextSize(12);
         tv.setTextColor(ArmsUtils.getColor(parent.getContext(), R.color.text_title));
         tv.setBackgroundResource(R.drawable.shape_tv_tag_video_detail);
         AutoUtils.auto(tv);
