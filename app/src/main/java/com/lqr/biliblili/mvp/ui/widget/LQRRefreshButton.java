@@ -152,4 +152,84 @@ public class LQRRefreshButton extends View {
     public float spToPx(float sp) {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, getResources().getDisplayMetrics());
     }
+
+    public int getBorderColor() {
+        return borderColor;
+    }
+
+    public void setBorderColor(int borderColor) {
+        this.borderColor = borderColor;
+    }
+
+    public float getBorderWidth() {
+        return borderWidth;
+    }
+
+    public void setBorderWidth(float borderWidth) {
+        this.borderWidth = borderWidth;
+    }
+
+    public float getBorderRadius() {
+        return borderRadius;
+    }
+
+    public void setBorderRadius(float borderRadius) {
+        this.borderRadius = borderRadius;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public int getTextColor() {
+        return textColor;
+    }
+
+    public void setTextColor(int textColor) {
+        this.textColor = textColor;
+    }
+
+    public float getTextSize() {
+        return textSize;
+    }
+
+    public void setTextSize(float textSize) {
+        this.textSize = textSize;
+    }
+
+    public int getIconSrc() {
+        return iconSrc;
+    }
+
+    public void setIconSrc(int iconSrc) {
+        this.iconSrc = iconSrc;
+    }
+
+    public float getIconSize() {
+        return iconSize;
+    }
+
+    public void setIconSize(float iconSize) {
+        this.iconSize = iconSize;
+    }
+
+    public Bitmap getIconBitmap() {
+        return iconBitmap;
+    }
+
+    public void setIconBitmap(Bitmap iconBitmap) {
+        this.iconBitmap = iconBitmap;
+    }
+
+    public float getSpace4TextAndIcon() {
+        return space4TextAndIcon;
+    }
+
+    public void setSpace4TextAndIcon(float space4TextAndIcon) {
+        this.space4TextAndIcon = space4TextAndIcon;
+    }
 }

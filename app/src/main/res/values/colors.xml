@@ -59,4 +59,9 @@
     <color name="top_left_text_recommend">#FB7299</color>
     <color name="top_right_text_recommend">#999999</color>
 
+    <!--文字颜色-->
+    <color name="text_title">#333333</color>
+    <color name="text_desc">#999999</color>
+    <color name="text_statement">#8D8D8D</color>
+
 </resources>

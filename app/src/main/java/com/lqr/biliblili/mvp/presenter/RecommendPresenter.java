@@ -18,8 +18,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.schedulers.Schedulers;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
+import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay;
 
 @FragmentScope
@@ -53,9 +55,12 @@ public class RecommendPresenter extends BasePresenter<RecommendContract.Model, R
                 .map(indexData -> mModel.parseIndexData(indexData))
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-                .subscribe(recommendMultiItems -> {
-                    if (recommendMultiItems != null) {
-                        setAdapter(recommendMultiItems, refresh);
+                .subscribe(new ErrorHandleSubscriber<List<RecommendMultiItem>>(mErrorHandler) {
+                    @Override
+                    public void onNext(@NonNull List<RecommendMultiItem> recommendMultiItems) {
+                        if (recommendMultiItems != null) {
+                            setAdapter(recommendMultiItems, refresh);
+                        }
                     }
                 });
     }

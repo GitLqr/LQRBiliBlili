@@ -55,6 +55,7 @@ dependencies {
     compile(rootProject.ext.dependencies["circleimageview"])
     compile(rootProject.ext.dependencies["FlycoTabLayout_Lib"])
     compile(rootProject.ext.dependencies["bga-banner"])
+    compile(rootProject.ext.dependencies["flowlayout"])
 
     // tool
     compile rootProject.ext.dependencies["arouter"]
@@ -72,6 +73,8 @@ dependencies {
     compile(rootProject.ext.dependencies["brvah"])
     compile(rootProject.ext.dependencies["FlycoSystemBar_Lib"])
     compile(rootProject.ext.dependencies["uiadapter"])
+    compile(rootProject.ext.dependencies["glide-transformations"])
+    compile(rootProject.ext.dependencies["gpuimage-library"])
 
     // test
     testCompile rootProject.ext.dependencies["junit"]

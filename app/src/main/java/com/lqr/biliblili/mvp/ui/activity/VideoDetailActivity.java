@@ -6,13 +6,13 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.flyco.systembar.SystemBarHelper;
@@ -21,6 +21,7 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.lqr.biliblili.R;
 import com.lqr.biliblili.app.base.MySupportActivity;
+import com.lqr.biliblili.app.data.entity.video.Summary;
 import com.lqr.biliblili.di.component.DaggerVideoDetailComponent;
 import com.lqr.biliblili.di.module.VideoDetailModule;
 import com.lqr.biliblili.mvp.contract.VideoDetailContract;
@@ -28,16 +29,15 @@ import com.lqr.biliblili.mvp.presenter.VideoDetailPresenter;
 import com.lqr.biliblili.mvp.ui.adapter.VideoDetailFragmentAdapter;
 import com.lqr.biliblili.mvp.ui.listener.AppBarStateChangeEvent;
 
-import java.util.ArrayList;
-
 import butterknife.BindView;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
-
+/**
+ * @创建者 CSDN_LQR
+ * @描述 视频详情
+ */
 public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter> implements VideoDetailContract.View {
-
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
 
     @BindView(R.id.collapsing_toolbar_layout)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
@@ -47,6 +47,8 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
     Toolbar mToolbar;
     @BindView(R.id.tv_av)
     TextView mTvAv;
+    @BindView(R.id.iv_cover)
+    ImageView mIvCover;
     @BindView(R.id.tv_play_immediately)
     TextView mTvPlayImmediately;
 
@@ -78,8 +80,8 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
         initStatusBar();
         initAppbar();
         initToolbar();
-        initViewPager();
         initFab();
+        mPresenter.loadData();
     }
 
     private void initStatusBar() {
@@ -123,10 +125,9 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
         mTvAv.setText("av");
     }
 
-    private void initViewPager() {
-        String summary = ArmsUtils.getString(this, R.string.v_detail_summary);
-        String evaluate = getResources().getString(R.string.v_detail_evaluate, 111);
-        VideoDetailFragmentAdapter videoDetailFragmentAdapter = new VideoDetailFragmentAdapter(getSupportFragmentManager(), new String[]{summary, evaluate});
+    @Override
+    public void initViewPager(Summary summaryData) {
+        VideoDetailFragmentAdapter videoDetailFragmentAdapter = new VideoDetailFragmentAdapter(getSupportFragmentManager(), this, summaryData);
         mViewPager.setAdapter(videoDetailFragmentAdapter);
         mTabLayout.setViewPager(mViewPager);
     }
@@ -185,4 +186,13 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
     }
 
 
+    @Override
+    public void setTvAvStr(String av) {
+        mTvAv.setText("av" + av);
+    }
+
+    @Override
+    public ImageView getIvCover() {
+        return mIvCover;
+    }
 }

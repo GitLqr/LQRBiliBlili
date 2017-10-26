@@ -13,10 +13,10 @@ import com.lqr.biliblili.app.base.MySupportFragment;
  * @创建者 CSDN_LQR
  * @描述 评论
  */
-public class EvaluateFragment extends MySupportFragment {
+public class ReplyFragment extends MySupportFragment {
 
-    public static EvaluateFragment newInstance() {
-        return new EvaluateFragment();
+    public static ReplyFragment newInstance() {
+        return new ReplyFragment();
     }
 
     @Override

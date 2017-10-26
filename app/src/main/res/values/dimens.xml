@@ -37,11 +37,15 @@
     <dimen name="item_desc_recommend">23px</dimen>
     <dimen name="item_badge_recommend">20px</dimen>
 
+    <!--VideoDetailActivity-->
+    <dimen name="video_state_text">24px</dimen>
+
     <!--间距-->
     <dimen name="margin_size_top_1">23px</dimen>
     <dimen name="margin_size_top_2">26px</dimen>
     <dimen name="margin_size_1_left_right">24px</dimen>
     <dimen name="margin_size_2_left_right">28px</dimen>
+    <dimen name="tv_drawable_padding">6px</dimen>
 
     <!--修改NavigationView中的Item的Icon大小-->
     <dimen name="design_navigation_icon_size">24dp</dimen>
