@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.jess.arms.http.imageloader.glide.ImageConfigImpl;
@@ -46,18 +46,19 @@ public class ReplyMultiItemAdapter extends BaseMultiItemQuickAdapter<ReplyMultiI
                     return;
                 }
                 Reply.DataBean.RepliesBean.MemberBeanXX member = replies.getMember();
-                ArmsUtils.obtainAppComponentFromContext(mContext).imageLoader().loadImage(mContext, ImageConfigImpl
-                        .builder().url(member.getAvatar()).imageView(helper.getView(R.id.iv_avatar)).transformation(new CenterCrop()).build());
+                ArmsUtils.obtainAppComponentFromContext(mContext).imageLoader().loadImage(mContext, ImageConfigImpl.builder().url(member.getAvatar()).imageView(helper.getView(R.id.iv_avatar)).transformation(new CircleCrop()).build());
                 helper.setText(R.id.tv_uname, member.getUname())
                         .setImageResource(R.id.iv_level, mLevelIcons[member.getLevel_info().getCurrent_level()])
                         .setText(R.id.tv_floor, "#" + replies.getFloor())
                         .setText(R.id.tv_content, replies.getContent().getMessage())
-                        .setText(R.id.tv_count, replies.getCount() + "");
+                        .setText(R.id.tv_count, replies.getCount() + "")
+                        .setVisible(R.id.line, getData().indexOf(item) + 1 < (getData().size()) ? getData().get(getData().indexOf(item) + 1).getItemType() == ReplyMultiItem.TITLE_HOTS ? false : true : true);
 
                 LinearLayout llReplies = helper.getView(R.id.ll_replies);
                 llReplies.removeAllViews();
                 List<Reply.DataBean.RepliesBean> repliesReplies = replies.getReplies();
                 if (repliesReplies != null && repliesReplies.size() > 0) {
+                    llReplies.setVisibility(View.VISIBLE);
                     for (int i = 0; i < repliesReplies.size(); i++) {
                         Reply.DataBean.RepliesBean repliesBean = repliesReplies.get(i);
                         View repliesView = View.inflate(mContext, R.layout.item_item_replies_video_detail, null);
@@ -70,6 +71,8 @@ public class ReplyMultiItemAdapter extends BaseMultiItemQuickAdapter<ReplyMultiI
                             llReplies.addView(line);
                         }
                     }
+                } else {
+                    llReplies.setVisibility(View.GONE);
                 }
                 break;
             case ReplyMultiItem.TITLE_HOTS:

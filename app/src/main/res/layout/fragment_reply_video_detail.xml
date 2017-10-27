@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoLinearLayout
+<com.zhy.autolayout.AutoRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fragment_bg"
-    android:orientation="vertical">
+    android:background="@color/fragment_bg">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_reply"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="2px"
+        android:background="@color/fragment_bg"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_reply"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_bottom"
         android:layout_width="match_parent"
         android:layout_height="80px"
+        android:layout_alignParentBottom="true"
         android:background="@color/reply_bottom_bg_video_detail"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -23,8 +37,8 @@
         android:paddingRight="@dimen/margin_size_1_left_right">
 
         <ImageView
-            android:layout_width="60px"
-            android:layout_height="60px"
+            android:layout_width="55px"
+            android:layout_height="55px"
             android:src="@mipmap/ic_emoji"
             android:tint="@color/colorPrimary"/>
 
@@ -34,15 +48,16 @@
             android:layout_marginLeft="@dimen/margin_size_1_left_right"
             android:layout_marginRight="@dimen/margin_size_1_left_right"
             android:layout_weight="1"
+            android:background="@null"
+            android:drawableBottom="@drawable/shape_et_comment_video_detail"
             android:hint="说点什么"
             android:textSize="26px"/>
 
-        <ImageButton
-            android:layout_width="60px"
-            android:layout_height="60px"
+        <ImageView
+            android:layout_width="50px"
+            android:layout_height="50px"
             android:background="@null"
             android:src="@mipmap/ic_send_text_gray"/>
 
     </LinearLayout>
-
-</com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

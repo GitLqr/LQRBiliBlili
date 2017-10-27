@@ -609,7 +609,7 @@ public class Reply {
                         private int pid;
                         private String name;
                         private String image;
-                        private int expire;
+                        private long expire;
 
                         public int getPid() {
                             return pid;
@@ -635,11 +635,11 @@ public class Reply {
                             this.image = image;
                         }
 
-                        public int getExpire() {
+                        public long getExpire() {
                             return expire;
                         }
 
-                        public void setExpire(int expire) {
+                        public void setExpire(long expire) {
                             this.expire = expire;
                         }
                     }
@@ -1280,7 +1280,7 @@ public class Reply {
                     private int pid;
                     private String name;
                     private String image;
-                    private int expire;
+                    private long expire;
 
                     public int getPid() {
                         return pid;
@@ -1306,11 +1306,11 @@ public class Reply {
                         this.image = image;
                     }
 
-                    public int getExpire() {
+                    public long getExpire() {
                         return expire;
                     }
 
-                    public void setExpire(int expire) {
+                    public void setExpire(long expire) {
                         this.expire = expire;
                     }
                 }

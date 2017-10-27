@@ -62,6 +62,7 @@
     <!--VideoDetailActivity-->
     <color name="reply_bottom_bg_video_detail">#FAFAFA</color>
     <color name="reply_replies_bg_video_detail">#F4F4F4</color>
+    <color name="reply_main_bg_video_detail">#FFFFFF</color>
 
     <!--文字颜色-->
     <color name="text_title">#333333</color>
