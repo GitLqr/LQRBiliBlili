@@ -59,6 +59,10 @@
     <color name="top_left_text_recommend">#FB7299</color>
     <color name="top_right_text_recommend">#999999</color>
 
+    <!--VideoDetailActivity-->
+    <color name="reply_bottom_bg_video_detail">#FAFAFA</color>
+    <color name="reply_replies_bg_video_detail">#F4F4F4</color>
+
     <!--文字颜色-->
     <color name="text_title">#333333</color>
     <color name="text_desc">#999999</color>

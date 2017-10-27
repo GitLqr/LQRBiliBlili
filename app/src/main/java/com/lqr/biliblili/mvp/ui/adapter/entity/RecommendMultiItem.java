@@ -30,6 +30,14 @@ public class RecommendMultiItem implements MultiItemEntity {
 
     private IndexData.DataBean indexDataBean;
 
+    public static boolean isVideoItem(int itemType) {
+        Timber.e("itemType = " + itemType);
+        if (itemType == ITEM_AV || ITEM_AV == ITEM_AV_RCMD_REASON) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean isWeNeed(String gotoStr) {
         if (TextUtils.isEmpty(gotoStr))
             return false;

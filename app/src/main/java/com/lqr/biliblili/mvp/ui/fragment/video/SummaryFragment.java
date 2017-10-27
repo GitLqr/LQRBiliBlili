@@ -95,7 +95,7 @@ public class SummaryFragment extends MySupportFragment {
     @Override
     public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (mRootView == null) {
-            mRootView = inflater.inflate(R.layout.fragment_summary, container, false);
+            mRootView = inflater.inflate(R.layout.fragment_summary_video_detail, container, false);
         }
         return mRootView;
     }

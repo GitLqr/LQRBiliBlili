@@ -36,12 +36,12 @@ public class VideoDetailModel extends BaseModel implements VideoDetailContract.M
     }
 
     @Override
-    public Observable<Summary> getSummaryData() {
-        return mRepositoryManager.obtainRetrofitService(VideoDetailService.class).getSummaryData();
+    public Observable<Summary> getSummaryData(String aid) {
+        return mRepositoryManager.obtainRetrofitService(VideoDetailService.class).getSummaryData(aid);
     }
 
     @Override
-    public Observable<Reply> getReplyData() {
-        return mRepositoryManager.obtainRetrofitService(VideoDetailService.class).getReplyData();
+    public Observable<Reply> getReplyData(String oid, int pn, int ps) {
+        return mRepositoryManager.obtainRetrofitService(VideoDetailService.class).getReplyData(oid, pn, ps);
     }
 }

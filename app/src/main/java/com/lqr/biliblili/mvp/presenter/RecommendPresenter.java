@@ -1,7 +1,9 @@
 package com.lqr.biliblili.mvp.presenter;
 
 import android.app.Application;
+import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.jess.arms.di.scope.FragmentScope;
 import com.jess.arms.http.imageloader.ImageLoader;
@@ -25,7 +27,7 @@ import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay;
 
 @FragmentScope
-public class RecommendPresenter extends BasePresenter<RecommendContract.Model, RecommendContract.View> implements BaseQuickAdapter.RequestLoadMoreListener {
+public class RecommendPresenter extends BasePresenter<RecommendContract.Model, RecommendContract.View> implements BaseQuickAdapter.RequestLoadMoreListener, BaseQuickAdapter.OnItemClickListener {
 
     private RxErrorHandler mErrorHandler;
     private Application mApplication;
@@ -73,6 +75,7 @@ public class RecommendPresenter extends BasePresenter<RecommendContract.Model, R
             mAdapter.setPreLoadNumber(2);
             mAdapter.setLoadMoreView(new CustomLoadMoreView());
             mAdapter.setOnLoadMoreListener(this);
+            mAdapter.setOnItemClickListener(this);
         } else {
             if (refresh) {
                 removePreRefreshItem();
@@ -120,6 +123,17 @@ public class RecommendPresenter extends BasePresenter<RecommendContract.Model, R
     }
 
     @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        List<RecommendMultiItem> data = adapter.getData();
+        if (data != null) {
+            RecommendMultiItem item = data.get(position);
+            if (RecommendMultiItem.isVideoItem(item.getItemType())) {
+                ARouter.getInstance().build("/video/detail").withString("aid", item.getIndexDataBean().getParam()).navigation();
+            }
+        }
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         this.mErrorHandler = null;
@@ -127,5 +141,4 @@ public class RecommendPresenter extends BasePresenter<RecommendContract.Model, R
         this.mImageLoader = null;
         this.mApplication = null;
     }
-
 }

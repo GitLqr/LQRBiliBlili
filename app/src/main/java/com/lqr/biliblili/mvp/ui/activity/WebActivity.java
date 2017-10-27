@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.just.library.AgentWeb;
@@ -25,7 +26,7 @@ public class WebActivity extends BaseActivity implements ChromeClientCallbackMan
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
-
+        ARouter.getInstance().inject(this);
     }
 
     @Override

@@ -9,19 +9,23 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.flyco.systembar.SystemBarHelper;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.lqr.biliblili.R;
 import com.lqr.biliblili.app.base.MySupportActivity;
-import com.lqr.biliblili.app.data.entity.video.Summary;
+import com.lqr.biliblili.app.data.entity.video.VideoDetail;
 import com.lqr.biliblili.di.component.DaggerVideoDetailComponent;
 import com.lqr.biliblili.di.module.VideoDetailModule;
 import com.lqr.biliblili.mvp.contract.VideoDetailContract;
@@ -37,7 +41,11 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  * @创建者 CSDN_LQR
  * @描述 视频详情
  */
+@Route(path = "/video/detail")
 public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter> implements VideoDetailContract.View {
+
+    @Autowired(name = "aid")
+    public String aid;
 
     @BindView(R.id.collapsing_toolbar_layout)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
@@ -62,6 +70,7 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
 
     @Override
     public void setupActivityComponent(AppComponent appComponent) {
+        ARouter.getInstance().inject(this);
         DaggerVideoDetailComponent //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
@@ -81,7 +90,11 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
         initAppbar();
         initToolbar();
         initFab();
-        mPresenter.loadData();
+        if (!TextUtils.isEmpty(aid)) {
+            mPresenter.loadData(aid);
+        } else {
+            showMessage("aid = " + aid);
+        }
     }
 
     private void initStatusBar() {
@@ -118,6 +131,7 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowTitleEnabled(false);
         }
+        mToolbar.setNavigationOnClickListener(v -> killMyself());
 
         // CollapsingToolbarLayout
         mCollapsingToolbarLayout.setTitleEnabled(false);// 必须关闭文字，否则Toolbar中的自定义控件位置会受影响
@@ -126,8 +140,8 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
     }
 
     @Override
-    public void initViewPager(Summary summaryData) {
-        VideoDetailFragmentAdapter videoDetailFragmentAdapter = new VideoDetailFragmentAdapter(getSupportFragmentManager(), this, summaryData);
+    public void initViewPager(VideoDetail videoDetail) {
+        VideoDetailFragmentAdapter videoDetailFragmentAdapter = new VideoDetailFragmentAdapter(getSupportFragmentManager(), this, videoDetail);
         mViewPager.setAdapter(videoDetailFragmentAdapter);
         mTabLayout.setViewPager(mViewPager);
     }

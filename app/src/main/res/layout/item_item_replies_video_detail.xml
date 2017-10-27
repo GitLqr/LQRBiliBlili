@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_size_1_left_right">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_replies_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="么么小叶子X"
+            android:textColor="@color/text_desc"
+            android:textSize="25px"/>
+
+        <TextView
+            android:id="@+id/tv_replies_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_size_1_left_right"
+            android:text="4小时前"
+            android:textColor="@color/text_desc"
+            android:textSize="25px"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_replies_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:text="大概是鸡小萌放大版吧"
+        android:textColor="@color/text_title"
+        android:textSize="28px"/>
+
+</LinearLayout>
