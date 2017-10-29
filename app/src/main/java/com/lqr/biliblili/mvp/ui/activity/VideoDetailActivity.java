@@ -1,6 +1,10 @@
 package com.lqr.biliblili.mvp.ui.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
@@ -11,6 +15,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
@@ -91,7 +96,7 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
         initToolbar();
         initFab();
         if (!TextUtils.isEmpty(aid)) {
-            mPresenter.loadData(aid);
+//            mPresenter.loadData(aid);
         } else {
             showMessage("aid = " + aid);
         }
@@ -146,8 +151,31 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
         mTabLayout.setViewPager(mViewPager);
     }
 
+    private int mAnchorX =30;
+    private int mAnchorY =60;
     private void initFab() {
+        mFab.setOnClickListener(view -> {
+            ObjectAnimator translationY = ObjectAnimator.ofFloat(mFab, "translationY", -ArmsUtils.dip2px(this, mAnchorY));
+            translationY.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    showPlayer(mIvCover);
+                    mFab.setVisibility(View.GONE);
+                }
+            });
+            translationY.start();
+        });
+    }
 
+    private void showPlayer(View view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mIvCover.setVisibility(View.VISIBLE);
+            Animator circularReveal = ViewAnimationUtils.createCircularReveal(mIvCover, view.getWidth() - ArmsUtils.dip2px(VideoDetailActivity.this, mAnchorX), view.getHeight() - ArmsUtils.dip2px(VideoDetailActivity.this, mAnchorY), 0, view.getWidth());
+            circularReveal.start();
+        } else {
+
+        }
     }
 
     public void showHideFab(int verticalOffset) {
