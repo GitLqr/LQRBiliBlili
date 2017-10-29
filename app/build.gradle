@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
+//apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -39,6 +39,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
+    buildToolsVersion '26.0.2'
 }
 
 dependencies {
@@ -60,10 +61,11 @@ dependencies {
     // tool
     compile rootProject.ext.dependencies["arouter"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
-    annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
-        exclude module: 'support-annotations'
-        exclude module: 'butterknife-annotations'
-    }
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+//    annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
+//        exclude module: 'support-annotations'
+//        exclude module: 'butterknife-annotations'
+//    }
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     provided rootProject.ext.dependencies["javax.annotation"]
     compile(rootProject.ext.dependencies["retrofit-url-manager"])
