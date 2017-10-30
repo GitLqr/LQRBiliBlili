@@ -2,8 +2,8 @@ ext {
 
     android = [
             compileSdkVersion: 26,
-            buildToolsVersion: "26.0.1",
-            minSdkVersion    : 17,
+            buildToolsVersion: "26.0.2",
+            minSdkVersion    : 16,
             targetSdkVersion : 26,
             versionCode      : 1,
             versionName      : "1.0"
@@ -19,7 +19,8 @@ ext {
             rxlifecycle2SdkVersion  : "2.1.0",
             espressoSdkVersion      : "2.2.2",
             canarySdkVersion        : "1.5.1",
-            fragmentationVersion    : "1.1.6"
+            fragmentationVersion    : "1.1.6",
+            ijkplayerVersion        : "0.8.4"
     ]
 
     dependencies = [
@@ -98,9 +99,17 @@ ext {
             "agentweb"                 : "com.just.agentweb:agentweb:2.0.1",
             "brvah"                    : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.32",
             "FlycoSystemBar_Lib"       : "com.flyco.systembar:FlycoSystemBar_Lib:1.0.0@aar",
-            "uiadapter"                : "sing.uiadapter:library:1.0.1",
             "glide-transformations"    : "jp.wasabeef:glide-transformations:3.0.1",
-            "gpuimage-library"    : "jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1",
+            "gpuimage-library"         : "jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1",
+
+            // ijkplayer
+            "ijkplayer-java"           : "tv.danmaku.ijk.media:ijkplayer-java:${version["ijkplayerVersion"]}",
+            "ijkplayer-exo"            : "tv.danmaku.ijk.media:ijkplayer-exo:${version["ijkplayerVersion"]}",
+            "ijkplayer-armv5"          : "tv.danmaku.ijk.media:ijkplayer-armv5:${version["ijkplayerVersion"]}",
+            "ijkplayer-armv7a"         : "tv.danmaku.ijk.media:ijkplayer-armv7a:${version["ijkplayerVersion"]}",
+            "ijkplayer-x86"            : "tv.danmaku.ijk.media:ijkplayer-x86:${version["ijkplayerVersion"]}",
+            "ijkplayer-arm64"          : "tv.danmaku.ijk.media:ijkplayer-arm64:${version["ijkplayerVersion"]}",
+            "ijkplayer-x86_64"         : "tv.danmaku.ijk.media:ijkplayer-x86_64:${version["ijkplayerVersion"]}",
 
             //test
             "junit"                    : "junit:junit:4.12",

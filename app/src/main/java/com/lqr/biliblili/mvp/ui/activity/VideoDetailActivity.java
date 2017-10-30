@@ -30,6 +30,7 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.lqr.biliblili.R;
 import com.lqr.biliblili.app.base.MySupportActivity;
+import com.lqr.biliblili.app.data.entity.video.PlayUrl;
 import com.lqr.biliblili.app.data.entity.video.VideoDetail;
 import com.lqr.biliblili.di.component.DaggerVideoDetailComponent;
 import com.lqr.biliblili.di.module.VideoDetailModule;
@@ -96,7 +97,7 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
         initToolbar();
         initFab();
         if (!TextUtils.isEmpty(aid)) {
-//            mPresenter.loadData(aid);
+            mPresenter.loadData(aid);
         } else {
             showMessage("aid = " + aid);
         }
@@ -151,8 +152,9 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
         mTabLayout.setViewPager(mViewPager);
     }
 
-    private int mAnchorX =30;
-    private int mAnchorY =60;
+    private int mAnchorX = 30;
+    private int mAnchorY = 60;
+
     private void initFab() {
         mFab.setOnClickListener(view -> {
             ObjectAnimator translationY = ObjectAnimator.ofFloat(mFab, "translationY", -ArmsUtils.dip2px(this, mAnchorY));
@@ -161,7 +163,6 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
                 public void onAnimationEnd(Animator animation) {
                     super.onAnimationEnd(animation);
                     showPlayer(mIvCover);
-                    mFab.setVisibility(View.GONE);
                 }
             });
             translationY.start();
@@ -169,13 +170,18 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
     }
 
     private void showPlayer(View view) {
+        mFab.setVisibility(View.GONE);
+        mIvCover.setVisibility(View.VISIBLE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mIvCover.setVisibility(View.VISIBLE);
             Animator circularReveal = ViewAnimationUtils.createCircularReveal(mIvCover, view.getWidth() - ArmsUtils.dip2px(VideoDetailActivity.this, mAnchorX), view.getHeight() - ArmsUtils.dip2px(VideoDetailActivity.this, mAnchorY), 0, view.getWidth());
             circularReveal.start();
-        } else {
-
         }
+        mPresenter.loadPlayUrl(aid);
+    }
+
+    @Override
+    public void playVideo(PlayUrl playUrl) {
+
     }
 
     public void showHideFab(int verticalOffset) {
@@ -187,17 +193,21 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
     }
 
     private void showFab() {
-        mFab.animate().scaleX(1f).scaleY(1f)
-                .setInterpolator(new OvershootInterpolator())
-                .start();
-        mFab.setClickable(true);
+        if (mFab.getVisibility() == View.INVISIBLE) {
+            mFab.animate().scaleX(1f).scaleY(1f)
+                    .setInterpolator(new OvershootInterpolator())
+                    .start();
+            mFab.setClickable(true);
+        }
     }
 
     private void hideFab() {
-        mFab.animate().scaleX(0).scaleY(0)
-                .setInterpolator(new AccelerateInterpolator())
-                .start();
-        mFab.setClickable(false);
+        if (mFab.getVisibility() == View.INVISIBLE) {
+            mFab.animate().scaleX(0).scaleY(0)
+                    .setInterpolator(new AccelerateInterpolator())
+                    .start();
+            mFab.setClickable(false);
+        }
     }
 
     @Override

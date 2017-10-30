@@ -12,8 +12,8 @@ android {
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
+        buildToolsVersion rootProject.ext.android["buildToolsVersion"]
 //        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [moduleName: project.getName()]
@@ -39,7 +39,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
-    buildToolsVersion '26.0.2'
+
+//    productFlavors {
+//        all32 { minSdkVersion 9 }
+//        all64 { minSdkVersion 21 }
+//        // armv5 {}
+//        // armv7a {}
+//        // arm64 { minSdkVersion 21 }
+//        // x86 {}
+//    }
 }
 
 dependencies {
@@ -62,10 +70,6 @@ dependencies {
     compile rootProject.ext.dependencies["arouter"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
-//    annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
-//        exclude module: 'support-annotations'
-//        exclude module: 'butterknife-annotations'
-//    }
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     provided rootProject.ext.dependencies["javax.annotation"]
     compile(rootProject.ext.dependencies["retrofit-url-manager"])
@@ -74,9 +78,17 @@ dependencies {
     compile(rootProject.ext.dependencies["agentweb"])
     compile(rootProject.ext.dependencies["brvah"])
     compile(rootProject.ext.dependencies["FlycoSystemBar_Lib"])
-    compile(rootProject.ext.dependencies["uiadapter"])
     compile(rootProject.ext.dependencies["glide-transformations"])
     compile(rootProject.ext.dependencies["gpuimage-library"])
+
+    // ijkplayer
+    compile(rootProject.ext.dependencies["ijkplayer-java"])
+    compile(rootProject.ext.dependencies["ijkplayer-exo"])
+    compile(rootProject.ext.dependencies["ijkplayer-armv5"])
+    compile(rootProject.ext.dependencies["ijkplayer-armv7a"])
+    compile(rootProject.ext.dependencies["ijkplayer-x86"])
+//    compile(rootProject.ext.dependencies["ijkplayer-x86_64"])
+//    compile(rootProject.ext.dependencies["ijkplayer-arm64"])
 
     // test
     testCompile rootProject.ext.dependencies["junit"]

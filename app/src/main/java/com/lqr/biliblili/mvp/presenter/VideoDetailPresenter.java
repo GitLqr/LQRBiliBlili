@@ -9,6 +9,7 @@ import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.utils.RxLifecycleUtils;
 import com.lqr.biliblili.app.data.api.Api;
+import com.lqr.biliblili.app.data.entity.video.PlayUrl;
 import com.lqr.biliblili.app.data.entity.video.Summary;
 import com.lqr.biliblili.app.data.entity.video.VideoDetail;
 import com.lqr.biliblili.mvp.contract.VideoDetailContract;
@@ -73,6 +74,20 @@ public class VideoDetailPresenter extends BasePresenter<VideoDetailContract.Mode
 //                    }
 //                });
 
+    }
+
+    public void loadPlayUrl(String aid) {
+        mModel.getPlayurl(aid)
+                .retryWhen(new RetryWithDelay(3, 2))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<PlayUrl>(mErrorHandler) {
+                    @Override
+                    public void onNext(PlayUrl playUrl) {
+                        mRootView.playVideo(playUrl);
+                    }
+                });
     }
 
     private void setVideoDetail(VideoDetail videoDetail) {

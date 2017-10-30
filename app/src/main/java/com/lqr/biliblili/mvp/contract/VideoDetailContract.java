@@ -4,6 +4,7 @@ import android.widget.ImageView;
 
 import com.jess.arms.mvp.IModel;
 import com.jess.arms.mvp.IView;
+import com.lqr.biliblili.app.data.entity.video.PlayUrl;
 import com.lqr.biliblili.app.data.entity.video.Reply;
 import com.lqr.biliblili.app.data.entity.video.Summary;
 import com.lqr.biliblili.app.data.entity.video.VideoDetail;
@@ -19,6 +20,8 @@ public interface VideoDetailContract {
         ImageView getIvCover();
 
         void initViewPager(VideoDetail videoDetail);
+
+        void playVideo(PlayUrl playUrl);
     }
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存
@@ -26,5 +29,7 @@ public interface VideoDetailContract {
         Observable<Summary> getSummaryData(String aid);
 
         Observable<Reply> getReplyData(String aid, int pn, int ps);
+
+        Observable<PlayUrl> getPlayurl(String aid);
     }
 }
