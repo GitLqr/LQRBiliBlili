@@ -4,6 +4,15 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LQRBiliBlili.iml" filepath="$PROJECT_DIR$/LQRBiliBlili.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer\gsyVideoPlayer.iml" filepath="E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer\gsyVideoPlayer.iml" />
+      <module fileurl="file://E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer-armv5\gsyVideoPlayer-armv5.iml" filepath="E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer-armv5\gsyVideoPlayer-armv5.iml" />
+      <module fileurl="file://E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer-armv64\gsyVideoPlayer-armv64.iml" filepath="E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer-armv64\gsyVideoPlayer-armv64.iml" />
+      <module fileurl="file://E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer-armv7a\gsyVideoPlayer-armv7a.iml" filepath="E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer-armv7a\gsyVideoPlayer-armv7a.iml" />
+      <module fileurl="file://E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer-ex_so\gsyVideoPlayer-ex_so.iml" filepath="E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer-ex_so\gsyVideoPlayer-ex_so.iml" />
+      <module fileurl="file://E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer-java\gsyVideoPlayer-java.iml" filepath="E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer-java\gsyVideoPlayer-java.iml" />
+      <module fileurl="file://E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer-x86\gsyVideoPlayer-x86.iml" filepath="E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer-x86\gsyVideoPlayer-x86.iml" />
+      <module fileurl="file://E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer-x86_64\gsyVideoPlayer-x86_64.iml" filepath="E:\AndroidStudioProjects\LQRBiliBlili\gsyVideoPlayer-x86_64\gsyVideoPlayer-x86_64.iml" />
+      <module fileurl="file://E:\AndroidStudioProjects\LQRBiliBlili\gsyvideoplayer-androidvideocache\gsyvideoplayer-androidvideocache.iml" filepath="E:\AndroidStudioProjects\LQRBiliBlili\gsyvideoplayer-androidvideocache\gsyvideoplayer-androidvideocache.iml" />
     </modules>
   </component>
 </project>

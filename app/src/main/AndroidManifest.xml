@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".mvp.ui.activity.MainActivity">
+            android:name=".mvp.ui.activity.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -41,7 +42,8 @@
             android:name=".mvp.ui.activity.CustomerViewActivity">
         </activity>
         <activity
-            android:name=".mvp.ui.activity.VideoDetailActivity">
+            android:name=".mvp.ui.activity.VideoDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
 
         <meta-data

@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -38,6 +39,13 @@ import com.lqr.biliblili.mvp.contract.VideoDetailContract;
 import com.lqr.biliblili.mvp.presenter.VideoDetailPresenter;
 import com.lqr.biliblili.mvp.ui.adapter.VideoDetailFragmentAdapter;
 import com.lqr.biliblili.mvp.ui.listener.AppBarStateChangeEvent;
+import com.lqr.biliblili.mvp.ui.listener.VideoViewListener;
+import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder;
+import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
+import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
+import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer;
+
+import java.util.Map;
 
 import butterknife.BindView;
 
@@ -53,6 +61,17 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
     @Autowired(name = "aid")
     public String aid;
 
+    // Fab锚点
+    private int mAnchorX = 30;
+    private int mAnchorY = 60;
+    // 播放器
+    private boolean isPlay;
+    private boolean isPause;
+    private boolean cacheVideo = true;
+    private OrientationUtils mOrientationUtils;
+    private GSYVideoOptionBuilder mGsyVideoOptionBuilder;
+    private ImageView mIvCover;
+
     @BindView(R.id.collapsing_toolbar_layout)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
     @BindView(R.id.appbar)
@@ -61,8 +80,8 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
     Toolbar mToolbar;
     @BindView(R.id.tv_av)
     TextView mTvAv;
-    @BindView(R.id.iv_cover)
-    ImageView mIvCover;
+    @BindView(R.id.video_view)
+    StandardGSYVideoPlayer mVideoView;
     @BindView(R.id.tv_play_immediately)
     TextView mTvPlayImmediately;
 
@@ -96,6 +115,7 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
         initAppbar();
         initToolbar();
         initFab();
+        initVideoPlayer();
         if (!TextUtils.isEmpty(aid)) {
             mPresenter.loadData(aid);
         } else {
@@ -141,8 +161,6 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
 
         // CollapsingToolbarLayout
         mCollapsingToolbarLayout.setTitleEnabled(false);// 必须关闭文字，否则Toolbar中的自定义控件位置会受影响
-
-        mTvAv.setText("av");
     }
 
     @Override
@@ -152,8 +170,6 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
         mTabLayout.setViewPager(mViewPager);
     }
 
-    private int mAnchorX = 30;
-    private int mAnchorY = 60;
 
     private void initFab() {
         mFab.setOnClickListener(view -> {
@@ -162,26 +178,96 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     super.onAnimationEnd(animation);
-                    showPlayer(mIvCover);
+                    showPlayer();
                 }
             });
             translationY.start();
         });
     }
 
-    private void showPlayer(View view) {
+    private void showPlayer() {
         mFab.setVisibility(View.GONE);
-        mIvCover.setVisibility(View.VISIBLE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Animator circularReveal = ViewAnimationUtils.createCircularReveal(mIvCover, view.getWidth() - ArmsUtils.dip2px(VideoDetailActivity.this, mAnchorX), view.getHeight() - ArmsUtils.dip2px(VideoDetailActivity.this, mAnchorY), 0, view.getWidth());
+            Animator circularReveal = ViewAnimationUtils.createCircularReveal(mVideoView, mVideoView.getWidth() - ArmsUtils.dip2px(VideoDetailActivity.this, mAnchorX), mVideoView.getHeight() - ArmsUtils.dip2px(VideoDetailActivity.this, mAnchorY), 0, mVideoView.getWidth());
             circularReveal.start();
         }
+        mVideoView.getStartButton().setVisibility(View.GONE);
         mPresenter.loadPlayUrl(aid);
+        AppBarLayout.LayoutParams layoutParams = (AppBarLayout.LayoutParams) mAppbar.getChildAt(0).getLayoutParams();
+        layoutParams.setScrollFlags(0);
+        mAppbar.getChildAt(0).setLayoutParams(layoutParams);
+
+    }
+
+    private void initVideoPlayer() {
+        // 封面
+        mIvCover = new ImageView(this);
+        mOrientationUtils = new OrientationUtils(this, mVideoView);
+        // 开始播放了才能旋转和全屏
+        mOrientationUtils.setEnable(false);
+        mGsyVideoOptionBuilder = new GSYVideoOptionBuilder()
+                .setThumbImageView(mIvCover)
+                .setUrl("")
+                .setIsTouchWiget(true)
+                .setRotateViewAuto(false)
+                .setLockLand(false)
+                .setShowFullAnimation(true)
+                .setNeedLockFull(true)
+                .setSeekRatio(1)
+                .setCacheWithPlay(cacheVideo)
+                .setVideoTitle("")
+                .setStandardVideoAllCallBack(new VideoViewListener() {
+                    @Override
+                    public void onPrepared(String s, Object... objects) {
+                        super.onPrepared(s, objects);
+                        // 开始播放了才能旋转和全屏
+                        mOrientationUtils.setEnable(true);
+                        isPlay = true;
+                    }
+
+                    @Override
+                    public void onQuitFullscreen(String s, Object... objects) {
+                        super.onQuitFullscreen(s, objects);
+                        if (mOrientationUtils != null) {
+                            mOrientationUtils.backToProtVideo();
+                        }
+                    }
+                });
+        mGsyVideoOptionBuilder.build(mVideoView);
+        mVideoView.getFullscreenButton().setOnClickListener(v -> {
+            // 直接横屏
+            mOrientationUtils.resolveByClick();
+            // 第一个true是否需要隐藏actionbar，第二个true是否需要隐藏statusbar
+            mVideoView.startWindowFullscreen(VideoDetailActivity.this, true, true);
+        });
+        mVideoView.setLockClickListener((view, lock) -> {
+            if (mOrientationUtils != null) {
+                //配合下方的onConfigurationChanged
+                mOrientationUtils.setEnable(!lock);
+            }
+        });
+        mVideoView.getTitleTextView().setVisibility(View.GONE);
+        mVideoView.getBackButton().setVisibility(View.GONE);
+        mVideoView.getStartButton().setVisibility(View.GONE);
     }
 
     @Override
     public void playVideo(PlayUrl playUrl) {
-
+        if (playUrl != null) {
+            Map<String, PlayUrl.DurlBean> durl = playUrl.getDurl();
+            if (durl != null) {
+                PlayUrl.DurlBean durlBean = durl.get("0");
+                if (durlBean != null) {
+                    mVideoView.setVisibility(View.VISIBLE);
+                    mVideoView.release();
+                    mGsyVideoOptionBuilder
+                            .setUrl(durlBean.getUrl())
+                            .setCacheWithPlay(cacheVideo)
+                            .build(mVideoView);
+                    mVideoView.postDelayed(() -> mVideoView.startPlayLogic(), 1000);
+                }
+            }
+        }
     }
 
     public void showHideFab(int verticalOffset) {
@@ -207,6 +293,58 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
                     .setInterpolator(new AccelerateInterpolator())
                     .start();
             mFab.setClickable(false);
+        }
+    }
+
+    private GSYVideoPlayer getCurPlay() {
+        if (mVideoView.getFullWindowPlayer() != null) {
+            return mVideoView.getFullWindowPlayer();
+        }
+        return mVideoView;
+    }
+
+    @Override
+    public void onBackPressedSupport() {
+        if (mOrientationUtils != null) {
+            mOrientationUtils.backToProtVideo();
+        }
+        if (StandardGSYVideoPlayer.backFromWindowFull(this)) {
+            return;
+        }
+        super.onBackPressedSupport();
+    }
+
+    @Override
+    protected void onResume() {
+        getCurPlay().onVideoResume();
+        super.onResume();
+        isPause = false;
+    }
+
+    @Override
+    protected void onPause() {
+        getCurPlay().onVideoPause();
+        super.onPause();
+        isPause = true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (isPlay) {
+            getCurPlay().release();
+        }
+        if (mOrientationUtils != null) {
+            mOrientationUtils.releaseListener();
+        }
+        super.onDestroy();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // 如果旋转了就全屏
+        if (isPlay && !isPause) {
+            mVideoView.onConfigurationChanged(this, newConfig, mOrientationUtils);
         }
     }
 

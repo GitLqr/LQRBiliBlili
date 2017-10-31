@@ -39,19 +39,13 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
-
-//    productFlavors {
-//        all32 { minSdkVersion 9 }
-//        all64 { minSdkVersion 21 }
-//        // armv5 {}
-//        // armv7a {}
-//        // arm64 { minSdkVersion 21 }
-//        // x86 {}
-//    }
 }
 
-dependencies {
+//repositories { flatDir { dirs 'libs' } }
 
+dependencies {
+    compile fileTree(include: ['*.aar'], dir: 'libs')
+//    compile(name:'gsyVideoPlayer-java', ext:'aar')
     //support
     compile rootProject.ext.dependencies["appcompat-v7"]
     compile(rootProject.ext.dependencies["cardview-v7"]) {
@@ -81,14 +75,19 @@ dependencies {
     compile(rootProject.ext.dependencies["glide-transformations"])
     compile(rootProject.ext.dependencies["gpuimage-library"])
 
-    // ijkplayer
+    // gsyVideoPlayer
     compile(rootProject.ext.dependencies["ijkplayer-java"])
     compile(rootProject.ext.dependencies["ijkplayer-exo"])
-    compile(rootProject.ext.dependencies["ijkplayer-armv5"])
-    compile(rootProject.ext.dependencies["ijkplayer-armv7a"])
-    compile(rootProject.ext.dependencies["ijkplayer-x86"])
-//    compile(rootProject.ext.dependencies["ijkplayer-x86_64"])
-//    compile(rootProject.ext.dependencies["ijkplayer-arm64"])
+    compile(rootProject.ext.dependencies["transitionseverywhere"])
+    compile(rootProject.ext.dependencies["gsyvideoplayer-androidvideocache"])
+//    compile(rootProject.ext.dependencies["gsyVideoPlayer-java"]) // 源码对本项目报错，修改后改用aar导入，但必须同时导入以上四个（ijkplayer-java、ijkplayer-exo、transitionseverywhere、gsyvideoplayer-androidvideocache）
+    compile(rootProject.ext.dependencies["gsyVideoPlayer-armv5"])
+    compile(rootProject.ext.dependencies["gsyVideoPlayer-armv7a"])
+    compile(rootProject.ext.dependencies["gsyVideoPlayer-arm64"])
+    compile(rootProject.ext.dependencies["gsyVideoPlayer-x64"])
+    compile(rootProject.ext.dependencies["gsyVideoPlayer-x86"])
+    //更多配置版so，增加了concat,rtsp,mpeg，crypto
+    //compile(rootProject.ext.dependencies["gsyVideoPlayer-ex_so"])
 
     // test
     testCompile rootProject.ext.dependencies["junit"]
