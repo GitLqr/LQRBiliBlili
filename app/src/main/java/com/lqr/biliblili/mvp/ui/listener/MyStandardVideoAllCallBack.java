@@ -5,7 +5,7 @@ import com.shuyu.gsyvideoplayer.listener.StandardVideoAllCallBack;
 
 import timber.log.Timber;
 
-public class VideoViewListener implements StandardVideoAllCallBack {
+public class MyStandardVideoAllCallBack implements StandardVideoAllCallBack {
 
     //加载成功，objects[0]是title，object[1]是当前所处播放器（全屏或非全屏）
     @Override

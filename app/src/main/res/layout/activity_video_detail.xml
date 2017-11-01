@@ -50,15 +50,15 @@
 
                     <TextView
                         android:id="@+id/tv_video_start_info"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:textColor="@android:color/black"
                         android:textSize="24px"/>
                 </RelativeLayout>
 
                 <!--视频播放器-->
-                <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+                <com.lqr.biliblili.mvp.ui.widget.LQRBiliBiliPlayer
                     android:id="@+id/video_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

@@ -5,8 +5,6 @@ import android.text.TextUtils;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.lqr.biliblili.app.data.entity.recommend.IndexData;
 
-import timber.log.Timber;
-
 
 public class RecommendMultiItem implements MultiItemEntity {
 
@@ -31,7 +29,6 @@ public class RecommendMultiItem implements MultiItemEntity {
     private IndexData.DataBean indexDataBean;
 
     public static boolean isVideoItem(int itemType) {
-        Timber.e("itemType = " + itemType);
         if (itemType == ITEM_AV || ITEM_AV == ITEM_AV_RCMD_REASON) {
             return true;
         }
@@ -74,7 +71,6 @@ public class RecommendMultiItem implements MultiItemEntity {
     }
 
     public void setItemTypeWithGoto(String gotoStr, boolean hasRcmdReason) {
-        Timber.e("gotoStr = " + gotoStr);
         switch (gotoStr) {
             case "banner":
                 itemType = BANNER;

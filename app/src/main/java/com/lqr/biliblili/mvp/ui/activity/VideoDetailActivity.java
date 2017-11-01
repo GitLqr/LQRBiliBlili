@@ -40,7 +40,8 @@ import com.lqr.biliblili.mvp.contract.VideoDetailContract;
 import com.lqr.biliblili.mvp.presenter.VideoDetailPresenter;
 import com.lqr.biliblili.mvp.ui.adapter.VideoDetailFragmentAdapter;
 import com.lqr.biliblili.mvp.ui.listener.AppBarStateChangeEvent;
-import com.lqr.biliblili.mvp.ui.listener.VideoViewListener;
+import com.lqr.biliblili.mvp.ui.listener.MyStandardVideoAllCallBack;
+import com.lqr.biliblili.mvp.ui.widget.LQRBiliBiliPlayer;
 import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
@@ -64,7 +65,8 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
 
     // toolbar、appbarlayout
     private boolean isPlayImmediately = false;
-    // Fab锚点
+    // Fab、锚点
+    private boolean isHidingFab = false;
     private int mAnchorX = 30;
     private int mAnchorY = 60;
     // 播放器
@@ -83,7 +85,7 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
     @BindView(R.id.tv_av)
     TextView mTvAv;
     @BindView(R.id.video_view)
-    StandardGSYVideoPlayer mVideoView;
+    LQRBiliBiliPlayer mVideoView;
     @BindView(R.id.rl_video_tip)
     RelativeLayout mRlVideoTip;
     @BindView(R.id.tv_video_start_info)
@@ -188,6 +190,7 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     super.onAnimationEnd(animation);
+                    mFab.setVisibility(View.GONE);
                     showVideoStartTip();
                 }
             });
@@ -196,9 +199,8 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
     }
 
     private void initVideoPlayer() {
-        // 封面
-        mOrientationUtils = new OrientationUtils(this, mVideoView);
         // 开始播放了才能旋转和全屏
+        mOrientationUtils = new OrientationUtils(this, mVideoView);
         mOrientationUtils.setEnable(false);
         mGsyVideoOptionBuilder = new GSYVideoOptionBuilder()
 //                .setThumbImageView(mIvCover)
@@ -211,11 +213,12 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
                 .setSeekRatio(1)
                 .setCacheWithPlay(cacheVideo)
                 .setVideoTitle("")
-                .setStandardVideoAllCallBack(new VideoViewListener() {
+                .setStandardVideoAllCallBack(new MyStandardVideoAllCallBack() {
                     @Override
                     public void onPrepared(String s, Object... objects) {
                         super.onPrepared(s, objects);
-                        mRlVideoTip.setVisibility(View.INVISIBLE);
+                        // 显示播放器
+                        mRlVideoTip.setVisibility(View.GONE);
                         mVideoView.setVisibility(View.VISIBLE);
                         // 开始播放了才能旋转和全屏
                         mOrientationUtils.setEnable(true);
@@ -243,13 +246,27 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
                 mOrientationUtils.setEnable(!lock);
             }
         });
-        mVideoView.getTitleTextView().setVisibility(View.GONE);
         mVideoView.getBackButton().setVisibility(View.GONE);
-        mVideoView.getStartButton().setVisibility(View.GONE);
+        mVideoView.setOnWidgetVisibleListener(new LQRBiliBiliPlayer.OnWidgetVisibleListener() {
+            @Override
+            public void onShow() {
+                // 非全屏
+                if (!mVideoView.isIfCurrentIsFullscreen()) {
+                    mToolbar.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onHide() {
+                // 非全屏
+                if (!mVideoView.isIfCurrentIsFullscreen()) {
+                    mToolbar.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
     }
 
     private void showVideoStartTip() {
-        mFab.setVisibility(View.GONE);
         mRlVideoTip.setVisibility(View.VISIBLE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Animator circularReveal = ViewAnimationUtils.createCircularReveal(mRlVideoTip,
@@ -283,7 +300,6 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
             if (durl != null) {
                 PlayUrl.DurlBean durlBean = durl.get("0");
                 if (durlBean != null) {
-                    mVideoView.setVisibility(View.VISIBLE);
                     mVideoView.release();
                     mGsyVideoOptionBuilder
                             .setUrl(durlBean.getUrl())
@@ -298,13 +314,14 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
     public void showHideFab(int verticalOffset) {
         if (verticalOffset == 0) {
             showFab();
-        } else if (verticalOffset < 0) {
+        } else if (verticalOffset < 0 && Math.abs(verticalOffset) > 100) {
             hideFab();
         }
     }
 
     private void showFab() {
-        if (mFab.getVisibility() == View.INVISIBLE) {
+        if (mFab.getVisibility() == View.VISIBLE) {
+            isHidingFab = false;
             mFab.animate().scaleX(1f).scaleY(1f)
                     .setInterpolator(new OvershootInterpolator())
                     .start();
@@ -313,7 +330,8 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
     }
 
     private void hideFab() {
-        if (mFab.getVisibility() == View.INVISIBLE) {
+        if (mFab.getVisibility() == View.VISIBLE && !isHidingFab) {
+            isHidingFab = true;
             mFab.animate().scaleX(0).scaleY(0)
                     .setInterpolator(new AccelerateInterpolator())
                     .start();
