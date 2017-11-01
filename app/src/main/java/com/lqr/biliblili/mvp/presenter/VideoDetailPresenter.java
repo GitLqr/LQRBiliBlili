@@ -31,6 +31,7 @@ public class VideoDetailPresenter extends BasePresenter<VideoDetailContract.Mode
 
     private int page = 1;
     private int rows = 20;
+    private String startInfoStr = "初始化播放器…";
 
     private RxErrorHandler mErrorHandler;
     private Application mApplication;
@@ -77,6 +78,8 @@ public class VideoDetailPresenter extends BasePresenter<VideoDetailContract.Mode
     }
 
     public void loadPlayUrl(String aid) {
+        // TODO: 2017/11/1 根据加载情况动态修改提示
+        mRootView.setTvVideoStartInfoStr(startInfoStr);
         mModel.getPlayurl(aid)
                 .retryWhen(new RetryWithDelay(3, 2))
                 .subscribeOn(Schedulers.io())
