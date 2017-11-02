@@ -65,6 +65,10 @@
     <color name="reply_main_bg_video_detail">#FFFFFF</color>
     <color name="video_player_start_tip_bg">#BABABA</color>
 
+    <!--播放器-->
+    <color name="video_controller_widget_bg">#99000000</color>
+    <color name="video_controller_widget_text">#ffffff</color>
+
     <!--文字颜色-->
     <color name="text_title">#333333</color>
     <color name="text_desc">#999999</color>

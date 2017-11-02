@@ -33,7 +33,16 @@
         android:background="#99000000"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:visibility="invisible">
+        android:visibility="gone">
+
+
+        <ImageView
+            android:id="@+id/start_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:paddingLeft="16dp"
+            android:scaleType="center"
+            android:src="@mipmap/bili_player_play_can_pause"/>
 
         <TextView
             android:id="@+id/current"
@@ -72,7 +81,7 @@
             android:layout_height="fill_parent"
             android:paddingRight="16dp"
             android:scaleType="center"
-            android:src="@drawable/video_enlarge"/>
+            android:src="@mipmap/ic_portrait_fullscreen"/>
     </LinearLayout>
 
     <ProgressBar
@@ -116,7 +125,7 @@
             android:textSize="18sp"/>
     </LinearLayout>
 
-    <moe.codeest.enviews.ENDownloadView
+    <ProgressBar
         android:id="@+id/loading"
         android:layout_width="28dp"
         android:layout_height="28dp"
@@ -124,13 +133,16 @@
         android:layout_centerVertical="true"
         android:visibility="invisible"/>
 
-    <moe.codeest.enviews.ENPlayView
+    <ImageView
         android:id="@+id/start"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_vertical"/>
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="20dp"
+        android:src="@mipmap/ic_tv_play"/>
 
 
     <ImageView

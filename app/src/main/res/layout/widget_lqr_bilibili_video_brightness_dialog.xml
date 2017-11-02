@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="90dp"
+        android:layout_height="160dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="@color/video_controller_widget_bg"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/brightness_progressbar"
+                style="@style/video_vertical_progressBar"
+                android:layout_width="4dp"
+                android:layout_height="81dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:max="100"/>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
+                android:src="@mipmap/ic_brightness_2"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/app_video_brightness"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:text="50%"
+        android:textColor="@color/video_controller_widget_text"
+        android:textSize="16dp"/>
+
+</RelativeLayout>

@@ -41,10 +41,9 @@ import com.lqr.biliblili.mvp.presenter.VideoDetailPresenter;
 import com.lqr.biliblili.mvp.ui.adapter.VideoDetailFragmentAdapter;
 import com.lqr.biliblili.mvp.ui.listener.AppBarStateChangeEvent;
 import com.lqr.biliblili.mvp.ui.listener.MyStandardVideoAllCallBack;
-import com.lqr.biliblili.mvp.ui.widget.LQRBiliBiliPlayer;
-import com.shuyu.gsyvideoplayer.builder.GSYVideoOptionBuilder;
+import com.lqr.biliblili.mvp.ui.widget.player.LQRBiliPlayer;
+import com.lqr.biliblili.mvp.ui.widget.player.LQRBiliPlayerOptionBuilder;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
-import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer;
 
 import java.util.Map;
@@ -74,7 +73,7 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
     private boolean isPause;
     private boolean cacheVideo = true;
     private OrientationUtils mOrientationUtils;
-    private GSYVideoOptionBuilder mGsyVideoOptionBuilder;
+    private LQRBiliPlayerOptionBuilder mGsyVideoOptionBuilder;
 
     @BindView(R.id.collapsing_toolbar_layout)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
@@ -85,7 +84,7 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
     @BindView(R.id.tv_av)
     TextView mTvAv;
     @BindView(R.id.video_view)
-    LQRBiliBiliPlayer mVideoView;
+    LQRBiliPlayer mVideoView;
     @BindView(R.id.rl_video_tip)
     RelativeLayout mRlVideoTip;
     @BindView(R.id.tv_video_start_info)
@@ -202,10 +201,10 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
         // 开始播放了才能旋转和全屏
         mOrientationUtils = new OrientationUtils(this, mVideoView);
         mOrientationUtils.setEnable(false);
-        mGsyVideoOptionBuilder = new GSYVideoOptionBuilder()
-//                .setThumbImageView(mIvCover)
+        mGsyVideoOptionBuilder = new LQRBiliPlayerOptionBuilder()
                 .setUrl("")
-                .setIsTouchWiget(true)
+                .setEnlargeImageRes(R.mipmap.ic_portrait_fullscreen)
+                .setIsTouchWidget(true)
                 .setRotateViewAuto(false)
                 .setLockLand(false)
                 .setShowFullAnimation(false)
@@ -213,7 +212,7 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
                 .setSeekRatio(1)
                 .setCacheWithPlay(cacheVideo)
                 .setVideoTitle("")
-                .setStandardVideoAllCallBack(new MyStandardVideoAllCallBack() {
+                .setMyStandardVideoAllCallBack(new MyStandardVideoAllCallBack() {
                     @Override
                     public void onPrepared(String s, Object... objects) {
                         super.onPrepared(s, objects);
@@ -247,7 +246,7 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
             }
         });
         mVideoView.getBackButton().setVisibility(View.GONE);
-        mVideoView.setOnWidgetVisibleListener(new LQRBiliBiliPlayer.OnWidgetVisibleListener() {
+        mVideoView.setOnWidgetVisibleListener(new LQRBiliPlayer.OnWidgetVisibleListener() {
             @Override
             public void onShow() {
                 // 非全屏
@@ -351,7 +350,7 @@ public class VideoDetailActivity extends MySupportActivity<VideoDetailPresenter>
         if (mOrientationUtils != null) {
             mOrientationUtils.backToProtVideo();
         }
-        if (StandardGSYVideoPlayer.backFromWindowFull(this)) {
+        if (LQRBiliPlayer.backFromWindowFull(this)) {
             return;
         }
         super.onBackPressedSupport();

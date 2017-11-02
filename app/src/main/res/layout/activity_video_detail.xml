@@ -58,7 +58,7 @@
                 </RelativeLayout>
 
                 <!--视频播放器-->
-                <com.lqr.biliblili.mvp.ui.widget.LQRBiliBiliPlayer
+                <com.lqr.biliblili.mvp.ui.widget.player.LQRBiliPlayer
                     android:id="@+id/video_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

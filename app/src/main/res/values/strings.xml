@@ -57,6 +57,15 @@
     <string name="v_detail_summary">简介</string>
     <string name="v_detail_evaluate">评论(%1$d)</string>
 
+
+    <!--视频播放-->
+    <string name="tips_not_wifi">您当前正在使用移动网络，继续播放将消耗流量</string>
+    <string name="tips_not_wifi_confirm">继续播放</string>
+    <string name="no_net">当前找不到网络</string>
+    <string name="tips_not_wifi_cancel">停止播放</string>
+    <string name="no_url">播放地址无效</string>
+
+    <!--app-->
     <string name="login">登录</string>
     <string name="tip_no_login_dynamic">你还没有登录哦~\n赶快登录打开新世界的大门</string>
     <string name="tip_no_login_communicate">未登录无法查看消息哦\n点击登录，与小伙伴愉快交流吧</string>
